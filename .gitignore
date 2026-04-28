@@ -8,13 +8,12 @@ scratch/
 # Documentation
 site/
 
-# AI agents in root
+# AI
 /CLAUDE.md
 /GEMINI.md
 /AGENTS.md
-
-# .agents dir
 .agents
+.codex
 
 # Logs
 *.log
@@ -24,6 +23,9 @@ site/
 
 # Build
 build/
+/src/build/
+/src/assets/*-pygbag.ogg
+/src/mud/assets/
 
 ##########################
 # Boilerplate .gitignore #

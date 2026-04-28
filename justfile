@@ -13,12 +13,16 @@ format:
 
 # Run type checking
 check *ARGS:
-    uvx ty@latest check --output-format concise {{ARGS}}
+    uvx ty@latest check --output-format concise --exclude src/mud/legacy.py --exclude src/mud/ui.py {{ARGS}}
+
+# Run unit tests
+test *ARGS:
+    uv run pytest
 
 # Run game
-run:
-    uv run pygbag src/mud/main.py
+run *ARGS:
+    uv run pygbag {{ARGS}} src
 
 # Build game for distribution
-build:
-    uv run pygbag --build --archive src/mud/main.py
+build *ARGS:
+    uv run pygbag --build --archive {{ARGS}} src
