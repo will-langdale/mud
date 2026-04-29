@@ -1,0 +1,656 @@
+{
+  "startup": [
+    {
+      "kind": "media",
+      "type": "music",
+      "name": [
+        "main",
+        -1
+      ]
+    },
+    {
+      "kind": "text",
+      "value": "Type HELP at the prompt for commands."
+    },
+    {
+      "kind": "media",
+      "type": "bg",
+      "name": 0
+    },
+    {
+      "kind": "text",
+      "value": " "
+    },
+    {
+      "kind": "text",
+      "value": "Endless blue. The open sky is an endless blue. The sound of static fills the air. A wisp of smoke creeps by. You are strapped into a leather seat in some sort of cockpit, but you're not moving. The controls are still, the radio bleats listless static, and the cockpit door is gone. Your head pulses with pain, and you feel dizzy. The smell of burning mixes with a dank, earthy musk. You THINK about what to do. Everything is spinning, but you need to free yourself and find out where you are. You SEARCH the cockpit and your fingers close around the buckles of your flight harness. You loosen it, pull off your helmet, and stand up. You LOOK at where you sat. You are in a crashed, olive fighter aircraft, covered in black scorches, with smoke billowing from under one wing. You LOOK in all directions, NORTH, EAST, SOUTH, WEST. Your heart pounds against your ribs. All around you, on every side. An endless, fathomless plain of mud. The craft groans and shifts, and you're thrown off-balance. You half-jump from the cockpit into the mire below, somehow remaining upright. The mud is surprisingly deep, quickly coming up to your calf. To your horror, you realise that it does not stop. If you stand still, you will sink, and you will drown. You don't know where you are, and your head throbs with a constant, disorienting pain. With difficulty, you take your first step into the sticky, sucking mud."
+    },
+    {
+      "kind": "text",
+      "value": "The hot, twisted metal of your aircraft sizzles as it sinks into the mire."
+    }
+  ],
+  "help": [
+    {
+      "kind": "media",
+      "type": "music",
+      "name": [
+        "main",
+        -1
+      ]
+    },
+    {
+      "kind": "text",
+      "value": "Type HELP at the prompt for commands."
+    },
+    {
+      "kind": "media",
+      "type": "bg",
+      "name": 0
+    },
+    {
+      "kind": "text",
+      "value": " "
+    },
+    {
+      "kind": "text",
+      "value": "Endless blue. The open sky is an endless blue. The sound of static fills the air. A wisp of smoke creeps by. You are strapped into a leather seat in some sort of cockpit, but you're not moving. The controls are still, the radio bleats listless static, and the cockpit door is gone. Your head pulses with pain, and you feel dizzy. The smell of burning mixes with a dank, earthy musk. You THINK about what to do. Everything is spinning, but you need to free yourself and find out where you are. You SEARCH the cockpit and your fingers close around the buckles of your flight harness. You loosen it, pull off your helmet, and stand up. You LOOK at where you sat. You are in a crashed, olive fighter aircraft, covered in black scorches, with smoke billowing from under one wing. You LOOK in all directions, NORTH, EAST, SOUTH, WEST. Your heart pounds against your ribs. All around you, on every side. An endless, fathomless plain of mud. The craft groans and shifts, and you're thrown off-balance. You half-jump from the cockpit into the mire below, somehow remaining upright. The mud is surprisingly deep, quickly coming up to your calf. To your horror, you realise that it does not stop. If you stand still, you will sink, and you will drown. You don't know where you are, and your head throbs with a constant, disorienting pain. With difficulty, you take your first step into the sticky, sucking mud."
+    },
+    {
+      "kind": "text",
+      "value": "The hot, twisted metal of your aircraft sizzles as it sinks into the mire."
+    },
+    {
+      "kind": "text",
+      "value": "Your head is murky and it is a tremendous effort to recall anything at all. You can GO NORTH, SOUTH, EAST or WEST. You can LOOK in directions and at objects. You can SEARCH objects, or just the area you're in. You can THINK about what options are available at each location. You can cry for the only HELP you're getting."
+    },
+    {
+      "kind": "text",
+      "value": "You are at the plane."
+    }
+  ],
+  "look": [
+    {
+      "kind": "media",
+      "type": "music",
+      "name": [
+        "main",
+        -1
+      ]
+    },
+    {
+      "kind": "text",
+      "value": "Type HELP at the prompt for commands."
+    },
+    {
+      "kind": "media",
+      "type": "bg",
+      "name": 0
+    },
+    {
+      "kind": "text",
+      "value": " "
+    },
+    {
+      "kind": "text",
+      "value": "Endless blue. The open sky is an endless blue. The sound of static fills the air. A wisp of smoke creeps by. You are strapped into a leather seat in some sort of cockpit, but you're not moving. The controls are still, the radio bleats listless static, and the cockpit door is gone. Your head pulses with pain, and you feel dizzy. The smell of burning mixes with a dank, earthy musk. You THINK about what to do. Everything is spinning, but you need to free yourself and find out where you are. You SEARCH the cockpit and your fingers close around the buckles of your flight harness. You loosen it, pull off your helmet, and stand up. You LOOK at where you sat. You are in a crashed, olive fighter aircraft, covered in black scorches, with smoke billowing from under one wing. You LOOK in all directions, NORTH, EAST, SOUTH, WEST. Your heart pounds against your ribs. All around you, on every side. An endless, fathomless plain of mud. The craft groans and shifts, and you're thrown off-balance. You half-jump from the cockpit into the mire below, somehow remaining upright. The mud is surprisingly deep, quickly coming up to your calf. To your horror, you realise that it does not stop. If you stand still, you will sink, and you will drown. You don't know where you are, and your head throbs with a constant, disorienting pain. With difficulty, you take your first step into the sticky, sucking mud."
+    },
+    {
+      "kind": "text",
+      "value": "The hot, twisted metal of your aircraft sizzles as it sinks into the mire."
+    },
+    {
+      "kind": "text",
+      "value": "The hot, twisted metal of your aircraft sizzles as it sinks into the mire."
+    },
+    {
+      "kind": "text",
+      "value": "The one-person aircraft is damaged beyond repair."
+    },
+    {
+      "kind": "text",
+      "value": "You are at the plane."
+    }
+  ],
+  "movement": [
+    {
+      "kind": "media",
+      "type": "music",
+      "name": [
+        "main",
+        -1
+      ]
+    },
+    {
+      "kind": "text",
+      "value": "Type HELP at the prompt for commands."
+    },
+    {
+      "kind": "media",
+      "type": "bg",
+      "name": 0
+    },
+    {
+      "kind": "text",
+      "value": " "
+    },
+    {
+      "kind": "text",
+      "value": "Endless blue. The open sky is an endless blue. The sound of static fills the air. A wisp of smoke creeps by. You are strapped into a leather seat in some sort of cockpit, but you're not moving. The controls are still, the radio bleats listless static, and the cockpit door is gone. Your head pulses with pain, and you feel dizzy. The smell of burning mixes with a dank, earthy musk. You THINK about what to do. Everything is spinning, but you need to free yourself and find out where you are. You SEARCH the cockpit and your fingers close around the buckles of your flight harness. You loosen it, pull off your helmet, and stand up. You LOOK at where you sat. You are in a crashed, olive fighter aircraft, covered in black scorches, with smoke billowing from under one wing. You LOOK in all directions, NORTH, EAST, SOUTH, WEST. Your heart pounds against your ribs. All around you, on every side. An endless, fathomless plain of mud. The craft groans and shifts, and you're thrown off-balance. You half-jump from the cockpit into the mire below, somehow remaining upright. The mud is surprisingly deep, quickly coming up to your calf. To your horror, you realise that it does not stop. If you stand still, you will sink, and you will drown. You don't know where you are, and your head throbs with a constant, disorienting pain. With difficulty, you take your first step into the sticky, sucking mud."
+    },
+    {
+      "kind": "text",
+      "value": "The hot, twisted metal of your aircraft sizzles as it sinks into the mire."
+    },
+    {
+      "kind": "text",
+      "value": "A shift in the mud briefly releases the unmistakable smell of decaying flesh."
+    },
+    {
+      "kind": "text",
+      "value": "You try north."
+    },
+    {
+      "kind": "text",
+      "value": "The bleak mud ahead appears less viscous, with fewer drab weeds able to take root."
+    },
+    {
+      "kind": "text",
+      "value": "The only way forward is through the sloppy sandy mire, but the loose texture makes you hesitate. You can proceed, if you wish."
+    }
+  ],
+  "invalid": [
+    {
+      "kind": "media",
+      "type": "music",
+      "name": [
+        "main",
+        -1
+      ]
+    },
+    {
+      "kind": "text",
+      "value": "Type HELP at the prompt for commands."
+    },
+    {
+      "kind": "media",
+      "type": "bg",
+      "name": 0
+    },
+    {
+      "kind": "text",
+      "value": " "
+    },
+    {
+      "kind": "text",
+      "value": "Endless blue. The open sky is an endless blue. The sound of static fills the air. A wisp of smoke creeps by. You are strapped into a leather seat in some sort of cockpit, but you're not moving. The controls are still, the radio bleats listless static, and the cockpit door is gone. Your head pulses with pain, and you feel dizzy. The smell of burning mixes with a dank, earthy musk. You THINK about what to do. Everything is spinning, but you need to free yourself and find out where you are. You SEARCH the cockpit and your fingers close around the buckles of your flight harness. You loosen it, pull off your helmet, and stand up. You LOOK at where you sat. You are in a crashed, olive fighter aircraft, covered in black scorches, with smoke billowing from under one wing. You LOOK in all directions, NORTH, EAST, SOUTH, WEST. Your heart pounds against your ribs. All around you, on every side. An endless, fathomless plain of mud. The craft groans and shifts, and you're thrown off-balance. You half-jump from the cockpit into the mire below, somehow remaining upright. The mud is surprisingly deep, quickly coming up to your calf. To your horror, you realise that it does not stop. If you stand still, you will sink, and you will drown. You don't know where you are, and your head throbs with a constant, disorienting pain. With difficulty, you take your first step into the sticky, sucking mud."
+    },
+    {
+      "kind": "text",
+      "value": "The hot, twisted metal of your aircraft sizzles as it sinks into the mire."
+    },
+    {
+      "kind": "text",
+      "value": "You stand still, exhausted, sinking slowly into the mud. Do you need HELP?"
+    },
+    {
+      "kind": "text",
+      "value": "You are at the plane."
+    }
+  ],
+  "death_restart": [
+    {
+      "kind": "media",
+      "type": "music",
+      "name": [
+        "main",
+        -1
+      ]
+    },
+    {
+      "kind": "text",
+      "value": "Type HELP at the prompt for commands."
+    },
+    {
+      "kind": "media",
+      "type": "bg",
+      "name": 0
+    },
+    {
+      "kind": "text",
+      "value": " "
+    },
+    {
+      "kind": "text",
+      "value": "Endless blue. The open sky is an endless blue. The sound of static fills the air. A wisp of smoke creeps by. You are strapped into a leather seat in some sort of cockpit, but you're not moving. The controls are still, the radio bleats listless static, and the cockpit door is gone. Your head pulses with pain, and you feel dizzy. The smell of burning mixes with a dank, earthy musk. You THINK about what to do. Everything is spinning, but you need to free yourself and find out where you are. You SEARCH the cockpit and your fingers close around the buckles of your flight harness. You loosen it, pull off your helmet, and stand up. You LOOK at where you sat. You are in a crashed, olive fighter aircraft, covered in black scorches, with smoke billowing from under one wing. You LOOK in all directions, NORTH, EAST, SOUTH, WEST. Your heart pounds against your ribs. All around you, on every side. An endless, fathomless plain of mud. The craft groans and shifts, and you're thrown off-balance. You half-jump from the cockpit into the mire below, somehow remaining upright. The mud is surprisingly deep, quickly coming up to your calf. To your horror, you realise that it does not stop. If you stand still, you will sink, and you will drown. You don't know where you are, and your head throbs with a constant, disorienting pain. With difficulty, you take your first step into the sticky, sucking mud."
+    },
+    {
+      "kind": "text",
+      "value": "The hot, twisted metal of your aircraft sizzles as it sinks into the mire."
+    },
+    {
+      "kind": "text",
+      "value": "Looking down you see you're sinking dangerously deep into the mud."
+    },
+    {
+      "kind": "text",
+      "value": "Eyes glazed over you shift your weight painfully from one leg to the other for a while. It brings no relief."
+    },
+    {
+      "kind": "text",
+      "value": "You are at the plane."
+    },
+    {
+      "kind": "text",
+      "value": "You attempt to move your legs. Sucked up to the thigh, you begin to shake as you realise you cannot move."
+    },
+    {
+      "kind": "text",
+      "value": "Alone, you wait to die."
+    },
+    {
+      "kind": "text",
+      "value": "Slowly you sink further and further, helplessly into the mud. Your abdomen. Your chest. Your shoulders."
+    },
+    {
+      "kind": "text",
+      "value": "Alone, you wait to die."
+    },
+    {
+      "kind": "text",
+      "value": "The mire closes over your face, and it's not long before your aching lungs force you to choke down the suffocating mud."
+    },
+    {
+      "kind": "artifacts",
+      "artifacts": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "kind": "media",
+      "type": "bg",
+      "name": 255
+    },
+    {
+      "kind": "text",
+      "value": " "
+    },
+    {
+      "kind": "media",
+      "type": "reset",
+      "name": ""
+    },
+    {
+      "kind": "text",
+      "value": "Endless blue. The open sky is an endless blue. The sound of static fills the air. A wisp of smoke creeps by. You feel for the sides of the cockpit and awkwardly stand up. All around you, on every side, an endless, fathomless plain of mud. You leap from the plane just as its weight shifts, and the mud begins, inevitably, to claim it. The mud rises up your calf, and you are sinking quickly. You must move on."
+    },
+    {
+      "kind": "media",
+      "type": "bg",
+      "name": 0
+    },
+    {
+      "kind": "media",
+      "type": "sound",
+      "name": "PLANE"
+    },
+    {
+      "kind": "text",
+      "value": "The hot, twisted metal of your aircraft sizzles as it sinks into the mire."
+    }
+  ],
+  "search_pickup": [
+    {
+      "kind": "media",
+      "type": "music",
+      "name": [
+        "main",
+        -1
+      ]
+    },
+    {
+      "kind": "text",
+      "value": "Type HELP at the prompt for commands."
+    },
+    {
+      "kind": "media",
+      "type": "bg",
+      "name": 0
+    },
+    {
+      "kind": "text",
+      "value": " "
+    },
+    {
+      "kind": "text",
+      "value": "Endless blue. The open sky is an endless blue. The sound of static fills the air. A wisp of smoke creeps by. You are strapped into a leather seat in some sort of cockpit, but you're not moving. The controls are still, the radio bleats listless static, and the cockpit door is gone. Your head pulses with pain, and you feel dizzy. The smell of burning mixes with a dank, earthy musk. You THINK about what to do. Everything is spinning, but you need to free yourself and find out where you are. You SEARCH the cockpit and your fingers close around the buckles of your flight harness. You loosen it, pull off your helmet, and stand up. You LOOK at where you sat. You are in a crashed, olive fighter aircraft, covered in black scorches, with smoke billowing from under one wing. You LOOK in all directions, NORTH, EAST, SOUTH, WEST. Your heart pounds against your ribs. All around you, on every side. An endless, fathomless plain of mud. The craft groans and shifts, and you're thrown off-balance. You half-jump from the cockpit into the mire below, somehow remaining upright. The mud is surprisingly deep, quickly coming up to your calf. To your horror, you realise that it does not stop. If you stand still, you will sink, and you will drown. You don't know where you are, and your head throbs with a constant, disorienting pain. With difficulty, you take your first step into the sticky, sucking mud."
+    },
+    {
+      "kind": "text",
+      "value": "The hot, twisted metal of your aircraft sizzles as it sinks into the mire."
+    },
+    {
+      "kind": "text",
+      "value": "The plane's first aid kit is gone, perhaps wherever the cockpit door went. You find a lighter wedged beneath the aircraft's seat."
+    },
+    {
+      "kind": "text",
+      "value": "You are at the plane."
+    }
+  ],
+  "restricted_movement": [
+    {
+      "kind": "media",
+      "type": "music",
+      "name": [
+        "main",
+        -1
+      ]
+    },
+    {
+      "kind": "text",
+      "value": "Type HELP at the prompt for commands."
+    },
+    {
+      "kind": "media",
+      "type": "bg",
+      "name": 0
+    },
+    {
+      "kind": "text",
+      "value": " "
+    },
+    {
+      "kind": "text",
+      "value": "Endless blue. The open sky is an endless blue. The sound of static fills the air. A wisp of smoke creeps by. You are strapped into a leather seat in some sort of cockpit, but you're not moving. The controls are still, the radio bleats listless static, and the cockpit door is gone. Your head pulses with pain, and you feel dizzy. The smell of burning mixes with a dank, earthy musk. You THINK about what to do. Everything is spinning, but you need to free yourself and find out where you are. You SEARCH the cockpit and your fingers close around the buckles of your flight harness. You loosen it, pull off your helmet, and stand up. You LOOK at where you sat. You are in a crashed, olive fighter aircraft, covered in black scorches, with smoke billowing from under one wing. You LOOK in all directions, NORTH, EAST, SOUTH, WEST. Your heart pounds against your ribs. All around you, on every side. An endless, fathomless plain of mud. The craft groans and shifts, and you're thrown off-balance. You half-jump from the cockpit into the mire below, somehow remaining upright. The mud is surprisingly deep, quickly coming up to your calf. To your horror, you realise that it does not stop. If you stand still, you will sink, and you will drown. You don't know where you are, and your head throbs with a constant, disorienting pain. With difficulty, you take your first step into the sticky, sucking mud."
+    },
+    {
+      "kind": "text",
+      "value": "The hot, twisted metal of your aircraft sizzles as it sinks into the mire."
+    },
+    {
+      "kind": "text",
+      "value": "A shift in the mud briefly releases the unmistakable smell of decaying flesh."
+    },
+    {
+      "kind": "text",
+      "value": "You try east."
+    },
+    {
+      "kind": "text",
+      "value": "The black trunk of a titanic fallen tree crosses your path. Though massive, it looks fragile, riddled with rotten holes."
+    },
+    {
+      "kind": "text",
+      "value": "The hulking log blocks your path. What do you do?"
+    },
+    {
+      "kind": "text",
+      "value": "You can't go that way right now."
+    },
+    {
+      "kind": "text",
+      "value": "You are at the riddled treestump."
+    },
+    {
+      "kind": "text",
+      "value": "The hulking log blocks your path. What do you do?"
+    }
+  ],
+  "random_sand": [
+    {
+      "kind": "media",
+      "type": "music",
+      "name": [
+        "main",
+        -1
+      ]
+    },
+    {
+      "kind": "text",
+      "value": "Type HELP at the prompt for commands."
+    },
+    {
+      "kind": "media",
+      "type": "bg",
+      "name": 0
+    },
+    {
+      "kind": "text",
+      "value": " "
+    },
+    {
+      "kind": "text",
+      "value": "Endless blue. The open sky is an endless blue. The sound of static fills the air. A wisp of smoke creeps by. You are strapped into a leather seat in some sort of cockpit, but you're not moving. The controls are still, the radio bleats listless static, and the cockpit door is gone. Your head pulses with pain, and you feel dizzy. The smell of burning mixes with a dank, earthy musk. You THINK about what to do. Everything is spinning, but you need to free yourself and find out where you are. You SEARCH the cockpit and your fingers close around the buckles of your flight harness. You loosen it, pull off your helmet, and stand up. You LOOK at where you sat. You are in a crashed, olive fighter aircraft, covered in black scorches, with smoke billowing from under one wing. You LOOK in all directions, NORTH, EAST, SOUTH, WEST. Your heart pounds against your ribs. All around you, on every side. An endless, fathomless plain of mud. The craft groans and shifts, and you're thrown off-balance. You half-jump from the cockpit into the mire below, somehow remaining upright. The mud is surprisingly deep, quickly coming up to your calf. To your horror, you realise that it does not stop. If you stand still, you will sink, and you will drown. You don't know where you are, and your head throbs with a constant, disorienting pain. With difficulty, you take your first step into the sticky, sucking mud."
+    },
+    {
+      "kind": "text",
+      "value": "The hot, twisted metal of your aircraft sizzles as it sinks into the mire."
+    },
+    {
+      "kind": "text",
+      "value": "A shift in the mud briefly releases the unmistakable smell of decaying flesh."
+    },
+    {
+      "kind": "text",
+      "value": "You try north."
+    },
+    {
+      "kind": "text",
+      "value": "The bleak mud ahead appears less viscous, with fewer drab weeds able to take root."
+    },
+    {
+      "kind": "text",
+      "value": "The only way forward is through the sloppy sandy mire, but the loose texture makes you hesitate. You can proceed, if you wish."
+    },
+    {
+      "kind": "text",
+      "value": "Plunging into the sandy mud you quickly find its fine consistency and depth simply replaces difficulty of movement with the exhausting need to move further and more consistently to avoid being sucked under. You cannot stop."
+    },
+    {
+      "kind": "text",
+      "value": "The afternoon sun beats down relentlessly."
+    },
+    {
+      "kind": "media",
+      "type": "bg",
+      "name": 20
+    },
+    {
+      "kind": "text",
+      "value": "You feel the mud becoming more solid beneath you, sticky but relatively shallow."
+    },
+    {
+      "kind": "text",
+      "value": "You spit mud from your mouth."
+    },
+    {
+      "kind": "text",
+      "value": "You stagger north."
+    },
+    {
+      "kind": "text",
+      "value": "The mire becomes more and more fluid until you find yourself in swampland. Bent, gloomy trees find root between patchy beds of tall, sharp rushes. You are chest deep in thick, murky water."
+    },
+    {
+      "kind": "text",
+      "value": "You can feel movement beneath the water."
+    },
+    {
+      "kind": "text",
+      "value": "You wipe muddy snot from your upper lip."
+    },
+    {
+      "kind": "text",
+      "value": "You went north, but--, yes."
+    },
+    {
+      "kind": "text",
+      "value": "You're covered in writhing, pulsating wormlike things."
+    },
+    {
+      "kind": "media",
+      "type": "sound",
+      "name": "RIVER"
+    },
+    {
+      "kind": "text",
+      "value": "The line of rushes stops suddenly, and you realise you are on the banks of a waterway. Sunk up to the chest but sheltered by the reeds you can feel the current pulling strongly east just ahead. You realise you cannot follow the river without entering the open water."
+    },
+    {
+      "kind": "text",
+      "value": "You can't go that way right now."
+    },
+    {
+      "kind": "text",
+      "value": "Thick, black creatures are all over your body."
+    },
+    {
+      "kind": "text",
+      "value": "You are at the waterway."
+    }
+  ],
+  "artifact_carryover_death": [
+    {
+      "kind": "media",
+      "type": "music",
+      "name": [
+        "main",
+        -1
+      ]
+    },
+    {
+      "kind": "text",
+      "value": "Type HELP at the prompt for commands."
+    },
+    {
+      "kind": "media",
+      "type": "bg",
+      "name": 0
+    },
+    {
+      "kind": "text",
+      "value": " "
+    },
+    {
+      "kind": "text",
+      "value": "Endless blue. The open sky is an endless blue. The sound of static fills the air. A wisp of smoke creeps by. You are strapped into a leather seat in some sort of cockpit, but you're not moving. The controls are still, the radio bleats listless static, and the cockpit door is gone. Your head pulses with pain, and you feel dizzy. The smell of burning mixes with a dank, earthy musk. You THINK about what to do. Everything is spinning, but you need to free yourself and find out where you are. You SEARCH the cockpit and your fingers close around the buckles of your flight harness. You loosen it, pull off your helmet, and stand up. You LOOK at where you sat. You are in a crashed, olive fighter aircraft, covered in black scorches, with smoke billowing from under one wing. You LOOK in all directions, NORTH, EAST, SOUTH, WEST. Your heart pounds against your ribs. All around you, on every side. An endless, fathomless plain of mud. The craft groans and shifts, and you're thrown off-balance. You half-jump from the cockpit into the mire below, somehow remaining upright. The mud is surprisingly deep, quickly coming up to your calf. To your horror, you realise that it does not stop. If you stand still, you will sink, and you will drown. You don't know where you are, and your head throbs with a constant, disorienting pain. With difficulty, you take your first step into the sticky, sucking mud."
+    },
+    {
+      "kind": "text",
+      "value": "The hot, twisted metal of your aircraft sizzles as it sinks into the mire."
+    },
+    {
+      "kind": "text",
+      "value": "Looking down you see you're sinking dangerously deep into the mud."
+    },
+    {
+      "kind": "text",
+      "value": "Eyes glazed over you shift your weight painfully from one leg to the other for a while. It brings no relief."
+    },
+    {
+      "kind": "text",
+      "value": "You are at the plane."
+    },
+    {
+      "kind": "text",
+      "value": "You attempt to move your legs. Sucked up to the thigh, you begin to shake as you realise you cannot move."
+    },
+    {
+      "kind": "text",
+      "value": "Alone, you wait to die."
+    },
+    {
+      "kind": "text",
+      "value": "Slowly you sink further and further, helplessly into the mud. Your abdomen. Your chest. Your shoulders."
+    },
+    {
+      "kind": "text",
+      "value": "Alone, you wait to die."
+    },
+    {
+      "kind": "text",
+      "value": "The mire closes over your face, and it's not long before your aching lungs force you to choke down the suffocating mud."
+    },
+    {
+      "kind": "artifacts",
+      "artifacts": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "kind": "media",
+      "type": "bg",
+      "name": 255
+    },
+    {
+      "kind": "text",
+      "value": " "
+    },
+    {
+      "kind": "media",
+      "type": "reset",
+      "name": ""
+    },
+    {
+      "kind": "text",
+      "value": "Endless blue. The open sky is an endless blue. The sound of static fills the air. A wisp of smoke creeps by. You feel for the sides of the cockpit and awkwardly stand up. All around you, on every side, an endless, fathomless plain of mud. You leap from the plane just as its weight shifts, and the mud begins, inevitably, to claim it. The mud rises up your calf, and you are sinking quickly. You must move on."
+    },
+    {
+      "kind": "media",
+      "type": "bg",
+      "name": 0
+    },
+    {
+      "kind": "media",
+      "type": "sound",
+      "name": "PLANE"
+    },
+    {
+      "kind": "text",
+      "value": "The hot, twisted metal of your aircraft sizzles as it sinks into the mire."
+    }
+  ],
+  "final_ending": [
+    {
+      "kind": "media",
+      "type": "bg",
+      "name": 255
+    },
+    {
+      "kind": "text",
+      "value": " "
+    },
+    {
+      "kind": "media",
+      "type": "reset",
+      "name": ""
+    },
+    {
+      "kind": "text",
+      "value": "Endless filth. The wasted mud stretches and stretches and stretches. In a tiny corner of a riddled, impossible mire, a figure struggles free of a crashed plane. Looking around them, covered in a heavy muck that drags them down, down, they set off in some direction or other. They are empty. They are no one. There is simply sky, infinite sky, and mud, mud, endless mud. The open sky is an endless blue, find them in the earth. The broken bodies sucked below, devoid of worldly worth. The sound of static fills the air, alone amongst the stone. A yawning empty wasteland topples speech's fallow throne. Lost beneath the endless mud a wisp of smoke creeps by. A spirit's snuffed out wandering, a journey's final sigh."
+    },
+    {
+      "kind": "media",
+      "type": "bg",
+      "name": 0
+    },
+    {
+      "kind": "media",
+      "type": "end",
+      "name": 0
+    },
+    {
+      "kind": "text",
+      "value": " "
+    },
+    {
+      "kind": "text",
+      "value": "Mud. By Will Langdale. Created Summer/Autumn 2014."
+    }
+  ]
+}

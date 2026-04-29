@@ -7,6 +7,8 @@ from importlib import resources
 from importlib.resources.abc import Traversable
 from string import Formatter
 
+from mud.engine.exceptions import MissingTextError
+
 
 class CaseConfigParser(configparser.ConfigParser):
     """Config parser that preserves text asset key case."""
@@ -45,7 +47,10 @@ class TextStore:
 
     def get(self, key: str) -> str:
         """Return a raw text value."""
-        return self._values[key]
+        try:
+            return self._values[key]
+        except KeyError as exc:
+            raise MissingTextError(key) from exc
 
     def render(self, key: str, **values: object) -> str:
         """Render a text value with named placeholders."""

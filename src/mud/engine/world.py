@@ -1,46 +1,706 @@
-"""World construction boundary for the engine.
-
-The current runtime is still driven by the legacy-authored world definitions in
-``mud.engine.runtime``. This module is the typed boundary used by new code and tests
-while that data is progressively moved into declarative assets.
-"""
+"""Declarative world data for Mud."""
 
 from __future__ import annotations
 
-from mud.engine import runtime
 from mud.engine.model import Item, Location, World
+from mud.engine.text import TextStore
 
 
-def build_world() -> World:
-    """Build a typed view of the currently configured runtime world."""
-    locations: dict[str, Location] = {}
-    items: dict[str, Item] = {}
+def build_world(text: TextStore | None = None) -> World:
+    """Build a fresh mutable world instance."""
+    store = text or TextStore.load()
 
-    for place in runtime.cart:
-        place_id = place.name.replace(" ", "_").replace(",", "").lower()
-        locations[place_id] = Location(
-            id=place_id,
-            name=place.name,
-            first_sight_key=place.firstsight,
-            look_key=place.look,
-            search_key=place.search,
-            restricted=place.restricmov,
-            restriction_key=place.restricwhy,
-        )
+    def t(key: str) -> str:
+        return store.get(key)
 
-        for item in place.items:
-            item_id = item.name.replace(" ", "_").replace(",", "").lower()
-            items.setdefault(
-                item_id,
-                Item(
-                    id=item_id,
-                    aliases=list(item.reflib),
-                    name=item.name,
-                    first_sight_key=item.firstsight,
-                    look_key=item.look,
-                    search_key=item.search,
-                    hidden=len(item.reflib) > 0 and item.reflib[0] == "hidden",
-                ),
-            )
+    items = {
+        "lighter": Item(
+            "lighter",
+            ["lighter", "zippo"],
+            "the ailing lighter",
+            "The zippo is a battered steel affair.",
+            t("legacy.line_0169_003"),
+            t("legacy.line_0170_004"),
+        ),
+        "fighter": Item(
+            "fighter",
+            ["fighter", "plane", "aircraft", "craft"],
+            "the fighter aircraft",
+            "The one-person aircraft is damaged beyond repair.",
+            "The olive fuselage bears a single red symbol.",
+            "",
+        ),
+        "stump": Item(
+            "stump",
+            ["stump", "log", "tree"],
+            "the gigantic, crumbling log",
+            t("legacy.line_0278_017"),
+            t("legacy.line_0279_018"),
+            t("legacy.line_0280_019"),
+        ),
+        "route": Item(
+            "route",
+            ["route itinerary", "notes", "route", "itinerary", "course", "manifest"],
+            "the plane's route itinerary",
+            t("legacy.line_0287_020"),
+            t("legacy.line_0288_021"),
+            t("legacy.line_0289_022"),
+        ),
+        "pages": Item(
+            "pages",
+            ["pages", "page", "notes", "paper", "papers"],
+            "the scattered pages from the plane",
+            t("legacy.line_0324_025"),
+            t("legacy.line_0325_026"),
+            "",
+            hidden=True,
+        ),
+        "swamptrees": Item(
+            "swamptrees",
+            ["trees", "tree"],
+            "the knarled trees",
+            "Knarled black trees reach out of the swamp.",
+            t("legacy.line_0344_028"),
+            t("legacy.line_0345_029"),
+        ),
+        "woodtrees": Item(
+            "woodtrees",
+            ["trees", "tree"],
+            "the towering trees",
+            "A thousand trees stretch into the distance around you.",
+            t("legacy.line_0363_031"),
+            t("legacy.line_0364_032"),
+        ),
+        "leeches": Item(
+            "leeches",
+            [
+                "wormlike creatures",
+                "leech",
+                "leeches",
+                "leechs,",
+                "worms",
+                "worm",
+                "creatures",
+                "creature",
+                "animals",
+                "animal",
+                "black",
+            ],
+            "the writhing black worms",
+            t("legacy.line_0412_034"),
+            t("legacy.line_0413_035"),
+            t("legacy.line_0414_036"),
+        ),
+        "sandtrap": Item(
+            "sandtrap",
+            ["sand", "mire", "sandy", "mud"],
+            "the murky, sandy mire",
+            "The loose and sandy mud stretches on into the distance.",
+            t("legacy.line_0507_039"),
+            t("legacy.line_0508_040"),
+        ),
+        "trooptrap": Item(
+            "trooptrap",
+            [
+                "troops",
+                "column",
+                "men",
+                "soldiers",
+                "soliders",
+                "solider",
+                "soldier",
+                "company",
+                "army",
+                "group",
+            ],
+            "the plodding group of soldiers",
+            "A column of soldiers wearily plods through the sticky mud.",
+            t("legacy.line_0681_046"),
+            "You cannot search the troops without approaching them.",
+        ),
+        "stones": Item(
+            "stones",
+            ["stones", "rocks", "monoliths", "standing", "boulders"],
+            "the standing stones",
+            "A series of standing stones rise around you.",
+            t("legacy.line_0714_049"),
+            t("legacy.line_0715_050"),
+        ),
+        "cavetrap": Item(
+            "cavetrap",
+            ["cave", "cavern", "opening", "rock", "rocky", "fissure"],
+            "the rocky fissure",
+            t("legacy.line_0895_065"),
+            t("legacy.line_0896_066"),
+            t("legacy.line_0897_067"),
+        ),
+        "box1": Item(
+            "box1",
+            ["small", "metal", "cache"],
+            "a small cache, made from a lightweight metal",
+            t("legacy.line_1002_071"),
+            t("legacy.line_1003_072"),
+            t("legacy.line_1004_073"),
+        ),
+        "box2": Item(
+            "box2",
+            ["square", "wood", "wooden", "cabinet", "cupboard"],
+            "a square and sturdy wooden cabinet",
+            t("legacy.line_1011_074"),
+            t("legacy.line_1012_075"),
+            t("legacy.line_1013_076"),
+        ),
+        "flare": Item(
+            "flare",
+            ["flare", "flaregun"],
+            "the flare",
+            "Though bent and dented, the flare appears intact.",
+            t("legacy.line_1092_088"),
+            t("legacy.line_1093_089"),
+        ),
+        "box3": Item(
+            "box3",
+            ["large", "holey", "holed", "hole", "crate"],
+            "a large crate, riddled with holes",
+            t("legacy.line_1118_091"),
+            t("legacy.line_1119_092"),
+            "",
+        ),
+        "medkit": Item(
+            "medkit",
+            ["medkit", "syringes", "health", "medical", "kit"],
+            "the small emergency medical kit",
+            t("legacy.line_1147_095"),
+            t("legacy.line_1148_096"),
+            t("legacy.line_1149_097"),
+        ),
+        "box4": Item(
+            "box4",
+            ["long", "flatgreen", "case"],
+            "a long, flat, muddy-green case",
+            "A long, flat box is all but buried in the mire.",
+            t("legacy.line_1176_099"),
+            "",
+        ),
+        "bodies": Item(
+            "bodies",
+            ["bodies", "body", "corpses", "corpse"],
+            "the scattered corpses",
+            t("legacy.line_1184_100"),
+            t("legacy.line_1185_101"),
+            t("legacy.line_1186_102"),
+        ),
+        "boat": Item(
+            "boat",
+            ["log", "float", "wood"],
+            "the length of decaying log",
+            t("legacy.line_1233_107"),
+            t("legacy.line_1234_108"),
+            "You find a few crawling insects that you bat away.",
+            hidden=True,
+        ),
+        "water": Item(
+            "water",
+            ["water", "river", "waterway"],
+            "the slow, dark waterway",
+            t("legacy.line_1264_112"),
+            t("legacy.line_1265_113"),
+            t("legacy.line_1266_114"),
+        ),
+        "aagun": Item(
+            "aagun",
+            ["gun", "anti-aircraft", "aircraft", "anti", "cannon", "artillery"],
+            "the sinking gun",
+            "The artillery sinks slowly into the thick slop.",
+            t("legacy.line_1274_115"),
+            t("legacy.line_1275_116"),
+        ),
+        "swamp_load": Item("swamp_load", [""], "_load", "", "", ""),
+        "wood_load": Item("wood_load", [""], "_load", "", "", ""),
+        "fog_load": Item("fog_load", [""], "_load", "", "", ""),
+    }
 
-    return World(locations=locations, items=items, start_location="at_the_plane")
+    items["lighter"].actions = {"spark": ["spark", "light", "flick"]}
+    items["stump"].actions = {
+        "stump_climb": ["climb", "clamber"],
+        "stump_wade": ["wade around", "wade"],
+        "stump_smash": ["smash through", "smash", "break through", "break"],
+    }
+    items["swamptrees"].actions = {"swamp_climb": ["climb", "clamber"]}
+    items["woodtrees"].actions = {"wood_climb": ["climb", "clamber"]}
+    items["leeches"].actions = {
+        "leeches_rid": ["pull off", "kill", "get rid of", "clear", "pull"]
+    }
+    items["sandtrap"].actions = {
+        "sand_forward": [
+            "continue into",
+            "yes",
+            "forward",
+            "forwards",
+            "go",
+            "continue",
+            "into",
+            "proceed",
+        ],
+        "sand_backward": ["leave", "no", "backward", "backwards"],
+    }
+    items["trooptrap"].actions = {
+        "troops_forward": [
+            "continue into",
+            "yes",
+            "forward",
+            "forwards",
+            "go",
+            "continue",
+            "into",
+            "proceed",
+            "approach",
+        ],
+        "troops_backward": [
+            "leave",
+            "no",
+            "backward",
+            "backwards",
+            "dont",
+            "fall",
+            "back",
+        ],
+    }
+    items["stones"].actions = {
+        "stones_climb": ["climb", "clamber"],
+        "stones_listen": ["listen to", "listen", "to", "hear"],
+    }
+    items["cavetrap"].actions = {"cave_enter": ["enter", "into", "in", "go", "explore"]}
+    items["box3"].actions = {"box3_inside": ["search"]}
+    items["flare"].actions = {"flare_fire": ["fire", "shoot", "send up"]}
+    items["box4"].actions = {"box4_inside": ["search"]}
+    items["medkit"].actions = {"medkit_use": ["use", "inject", "apply"]}
+    items["boat"].actions = {
+        "boat_enter": [
+            "float into the river with",
+            "paddle",
+            "use",
+            "get",
+            "push",
+            "off",
+            "float",
+            "down",
+            "length",
+        ]
+    }
+    items["water"].actions = {"water_enter": ["try to swim into", "swim", "water"]}
+    items["swamp_load"].actions = {"swamp_go": []}
+    items["wood_load"].actions = {"wood_go": []}
+    items["fog_load"].actions = {"fog_go": []}
+
+    locations = {
+        "plane": Location(
+            "plane",
+            "at the plane",
+            t("legacy.line_1283_117"),
+            t("legacy.line_1284_118"),
+            t("legacy.line_1288_119"),
+            {"north": "sand", "east": "snake", "south": "fog", "west": "debris"},
+            items=["fighter"],
+        ),
+        "snake": Location(
+            "snake",
+            "at the riddled treestump",
+            t("legacy.line_1293_120"),
+            t("legacy.line_1294_121"),
+            t("legacy.line_1304_122"),
+            {"north": "sand", "east": "log", "south": "fog", "west": "plane"},
+            True,
+            "The hulking log blocks your path. What do you do?",
+            ["stump"],
+        ),
+        "sand": Location(
+            "sand",
+            "at a sandy, muddy mess",
+            t("legacy.line_1309_123"),
+            "mud, as far as the eye can see",
+            t("legacy.line_1328_125"),
+            {"north": "swamp", "east": "blankne", "south": "plane", "west": "blanknw"},
+            True,
+            t("legacy.line_1327_124"),
+            ["sandtrap"],
+        ),
+        "sand_in": Location(
+            "sand_in",
+            t("legacy.line_1332_126"),
+            t("legacy.line_1333_127"),
+            "an endless sandy morass",
+            t("legacy.line_1338_128"),
+            {"north": "swamp", "east": "blankne", "south": "plane", "west": "blanknw"},
+        ),
+        "debris": Location(
+            "debris",
+            "at the strewn debris",
+            t("legacy.line_1343_129"),
+            "some wreckage peppering a vast mud flat",
+            t("legacy.line_1353_130"),
+            {"north": "sand", "east": "plane", "south": "fog", "west": "gun"},
+            items=["box1", "box2", "box3", "box4"],
+        ),
+        "fog": Location(
+            "fog",
+            "in an endless bogland, surrounded by fog",
+            t("legacy.line_1358_131"),
+            "an expanse of mud disappearing into a bank of cloud",
+            t("legacy.line_1363_132"),
+            {"north": "plane", "east": "blankse", "south": "cave", "west": "blanksw"},
+            True,
+            "",
+            ["fog_load"],
+        ),
+        "blanksw": Location(
+            "blanksw",
+            "in an endless bogland",
+            "The turgid mud stretches endlessly.",
+            "endless mud",
+            t("legacy.line_1373_133"),
+            {"north": "gun", "east": "fog", "south": "cave", "west": "troops"},
+        ),
+        "log": Location(
+            "log",
+            "in an expanse of mud, dotted with knarled shrubbery",
+            t("legacy.line_1378_134"),
+            "a massive field of mire, with a few plants here and there",
+            "You can find nothing further among the scattered shrubs.",
+            {"north": "blankne", "east": "wood", "south": "blankse", "west": "snake"},
+            items=["pages"],
+        ),
+        "swamp": Location(
+            "swamp",
+            "at the swamp",
+            t("legacy.line_1388_135"),
+            "a sparse wetland, with rushes and trees",
+            t("legacy.line_1396_136"),
+            {"north": "river", "east": "blankne", "south": "sand", "west": "blanknw"},
+            items=["swamp_load", "swamptrees"],
+        ),
+        "gun": Location(
+            "gun",
+            "at the abandoned gun",
+            t("legacy.line_1401_137"),
+            t("legacy.line_1402_138"),
+            t("legacy.line_1406_139"),
+            {
+                "north": "blanknw",
+                "east": "debris",
+                "south": "blanksw",
+                "west": "troops",
+            },
+            items=["aagun"],
+        ),
+        "cave": Location(
+            "cave",
+            "at the endless cliff",
+            t("legacy.line_1411_140"),
+            "a field of mud, with a rocky formation on the horizon",
+            t("legacy.line_1416_141"),
+            {"north": "fog", "east": "blankse", "south": "cave", "west": "blanksw"},
+            items=["cavetrap"],
+        ),
+        "cave_in": Location(
+            "cave_in",
+            "lost deep in the endless black of a cave system",
+            "",
+            "black",
+            t("legacy.line_1426_142"),
+            {"north": "fog", "east": "blankse", "south": "cave", "west": "blanksw"},
+        ),
+        "wood": Location(
+            "wood",
+            "in dense woodland",
+            t("legacy.line_1431_143"),
+            "a dense thicket beginning to take hold on the muddy plain",
+            t("legacy.line_1436_144"),
+            {"north": "blankne", "east": "wood_in", "south": "blankse", "west": "log"},
+            items=["woodtrees"],
+        ),
+        "wood_in": Location(
+            "wood_in",
+            "deep in the mud of the dense forest",
+            t("legacy.line_1441_145"),
+            "the thick foliage growing thicker still",
+            "",
+            {"north": "north", "east": "east", "south": "south", "west": "west"},
+            items=["wood_load", "woodtrees"],
+        ),
+        "river": Location(
+            "river",
+            "at the waterway",
+            t("legacy.line_1454_146"),
+            t("legacy.line_1455_147"),
+            t("legacy.line_1474_148"),
+            {"north": "river", "east": "swamp", "south": "swamp", "west": "swamp"},
+            items=["boat", "water"],
+        ),
+        "troops": Location(
+            "troops",
+            "at the boulders",
+            t("legacy.line_1479_149"),
+            t("legacy.line_1480_150"),
+            t("legacy.line_1489_151"),
+            {
+                "north": "blanknw",
+                "east": "gun",
+                "south": "blanksw",
+                "west": "troops_in",
+            },
+            items=["stones"],
+        ),
+        "troops_in": Location(
+            "troops_in",
+            t("legacy.line_1493_152"),
+            t("legacy.line_1494_153"),
+            t("legacy.line_1495_154"),
+            "If you move, you'll surely be discovered.",
+            {
+                "north": "troops_in",
+                "east": "troops",
+                "south": "troops_in",
+                "west": "troops_in",
+            },
+            True,
+            t("legacy.line_1525_155"),
+            ["trooptrap", "stones"],
+        ),
+        "blankse": Location(
+            "blankse",
+            "in an endless bogland",
+            "The turgid mud stretches endlessly.",
+            "endless mud",
+            t("legacy.line_1536_156"),
+            {"north": "log", "east": "wood", "south": "cave", "west": "fog"},
+        ),
+        "blanknw": Location(
+            "blanknw",
+            "in an endless bogland",
+            "The turgid mud stretches endlessly.",
+            "endless mud",
+            t("legacy.line_1546_157"),
+            {"north": "swamp", "east": "sand", "south": "gun", "west": "troops"},
+        ),
+        "blankne": Location(
+            "blankne",
+            "in an endless bogland",
+            "The turgid mud stretches endlessly.",
+            "endless mud",
+            t("legacy.line_1556_158"),
+            {"north": "swamp", "east": "wood", "south": "log", "west": "sand"},
+        ),
+    }
+
+    return World(
+        locations=locations,
+        items=items,
+        condition_items={"leeches": "leeches"},
+        start="plane",
+        obstacles=obstacles(store),
+        commands={
+            "look": ["look", "examine"],
+            "move": ["move", "go", "walk", "run", "g"],
+            "help": ["help", "h"],
+            "think": ["think", "consider", "appraise", "mull", "t"],
+            "search": ["search", "loot", "salvage", "find"],
+            "wait": ["wait", "rest", "sleep", "stop"],
+            "shout": ["talk", "scream", "shout", "speak", "call"],
+            "exit": ["quit", "exit"],
+        },
+    )
+
+
+def obstacles(store: TextStore) -> list[list[str]]:
+    """Return the legacy random text banks."""
+
+    def t(key: str) -> str:
+        return store.get(key)
+
+    return [
+        ["The mud is too deep, too sticky.", t("legacy.line_1842_160")],
+        [
+            "You stumble %s.",
+            "You stagger %s.",
+            "You manage to go %s.",
+            "You think you've gone %s.",
+            "It's almost certain you've gone %s.",
+            "You went %s, but--, yes.",
+            "You try %s.",
+            "You went %s, yes.",
+        ],
+        [
+            "The mud sucks at your feet.",
+            "Each step aches.",
+            "The stench of rotting flora is everywhere.",
+            "You spit mud from your mouth.",
+            "Something brushes you beneath the mud, and is gone.",
+            "You can taste gravel between your teeth.",
+            "You wipe muddy snot from your upper lip.",
+            "Your tongue sticks at your dry palate.",
+            "Your breath scratches your raw throat.",
+            t("legacy.line_1864_161"),
+            "The air is putrid.",
+            "You wipe a brown-red moisture from your eyes.",
+            "The rising heat from the bog is suffocating.",
+            "Flies hop about the mud's surface.",
+            "You try to wipe wet mud from your eyes and face.",
+            "Mud has caked dry about your thighs, heavy and stiff.",
+            "Your muscles ache from effort.",
+            "Your collar worries at insect bites around your neck.",
+            t("legacy.line_1873_162"),
+            "Your foot snares on something in the mire, but you free it.",
+            "You try to rub some of the dried mud from your matted hair.",
+            "Your head pounds.",
+            "You're desperately thirsty.",
+            "Insects choke the air around you.",
+            "You need to sit and rest, but there is nowhere.",
+            t("legacy.line_1880_163"),
+            "The buzz of insects is incessant.",
+            t("legacy.line_1882_164"),
+            "Sweat remoistens the mud about your face.",
+            "Your forearms are red from sunburn, mottled with mud.",
+            t("legacy.line_1885_165"),
+            t("legacy.line_1886_166"),
+            "Your head throbs.",
+            "You feel dizzy.",
+        ],
+        [
+            "The afternoon sun beats down relentlessly.",
+            "The sun has definitely sunk in the sky.",
+            t("legacy.line_1893_167"),
+            "The low, orange sun casts long shadows across the mud.",
+            "The sky's dark blue deepens swiftly.",
+            t("legacy.line_1896_168"),
+            "It is a night of absolute black.",
+        ],
+        [
+            t("legacy.line_1900_169"),
+            "You must rest - you're desperate to rest.",
+            t("legacy.line_1902_170"),
+            "You don't know how much longer you can keep this up.",
+            t("legacy.line_1904_171"),
+            "Your entire body begins to slow from the exertion.",
+            t("legacy.line_1906_172"),
+            "You have to stop.",
+            "You cannot go on any longer.",
+            t("legacy.line_1909_173"),
+            "Your heavy clothes drag in the muck.",
+        ],
+        [
+            t("legacy.line_1913_174"),
+            t("legacy.line_1914_175"),
+            t("legacy.line_1915_176"),
+            "Your slow sinking reminds you that you can never stop.",
+            t("legacy.line_1917_177"),
+        ],
+        [
+            "You cough a few times, and spit up mud.",
+            "You choke out a quiet rasp.",
+            "You are too scared to make a sound.",
+            "Your chapped lips are too agonising to open.",
+            t("legacy.line_1924_178"),
+            "You contort your lips and tongue but cannot form a word.",
+            "You don't remember how.",
+            t("legacy.line_1927_179"),
+            "How?",
+        ],
+        [
+            "Your jaw clenches as you bump along.",
+            "Every jolt of the stretcher twists you painfully.",
+            t("legacy.line_1933_180"),
+            "Your eyes bore into the middle distance.",
+            "You are quiet.",
+            t("legacy.line_1936_181"),
+            "The stretcher-bearers wheeze with effort.",
+        ],
+        [
+            "The endless fog presses in on you.",
+            "Every hair on your arms has pricked up in the damp cold.",
+            "You think you see a shape moving somewhere ahead.",
+            t("legacy.line_1943_182"),
+            t("legacy.line_1944_183"),
+            "That way is north.",
+            "That way is east.",
+            "That way is south.",
+            "That way is west.",
+            "You hear a muddy splash somewhere deep in the fog.",
+            t("legacy.line_1951_184"),
+            "There is no start, no end, no progress.",
+            "There is a very slight breeze against your face.",
+            "The wind tousles at your muddy hair from behind.",
+            "The back of your right hand feels a chilly pang.",
+            "You shove your left hand in your pocket to keep it warm.",
+            "You're unsure if you've walked a mile or a few feet.",
+            "You lose some feeling in your toes.",
+        ],
+        [
+            "Thick, black creatures are all over your body.",
+            "You can feel movement from under your clothes.",
+            "Some black worms fatten on your legs.",
+            "Something writhes against your skin.",
+            "Dark worms pulsate and grow on your flesh.",
+            t("legacy.line_1966_185"),
+            "Wormlike creatures are feasting on your flesh.",
+            "You feel the flick of a worm against your collarbone.",
+            t("legacy.line_1969_186"),
+            "You're covered in writhing, pulsating wormlike things.",
+        ],
+        [
+            t("legacy.line_1973_187"),
+            t("legacy.line_1974_188"),
+            t("legacy.line_1975_189"),
+            t("legacy.line_1976_190"),
+            t("legacy.line_1977_191"),
+            t("legacy.line_1978_192"),
+            t("legacy.line_1979_193"),
+            t("legacy.line_1980_194"),
+            t("legacy.line_1981_195"),
+            t("legacy.line_1982_196"),
+            "You wander onwards, ever onwards.",
+            t("legacy.line_1984_197"),
+        ],
+        [
+            "You find yourself in a small clearing.",
+            t("legacy.line_1988_198"),
+            t("legacy.line_1989_199"),
+            "The foliage around you begins to look a little greener.",
+            "Insects begin to swarm around you, and you cannot continue.",
+            "The trees around you have become wilted and decayed.",
+            t("legacy.line_1993_200"),
+            t("legacy.line_1994_201"),
+            "You pause, unsure whether to continue this way.",
+            "Trees twist together ahead, and you can't continue.",
+            t("legacy.line_1997_202"),
+            "A low rustle high in the trees seems to circle you.",
+            "The trees around you seem unfathomably tall.",
+            t("legacy.line_2000_203"),
+        ],
+        [
+            t("legacy.line_2003_204"),
+            t("legacy.line_2004_205"),
+            t("legacy.line_2005_206"),
+            t("legacy.line_2006_207"),
+            "You notice some small round burns on a trunk that way.",
+            "You think you can make out movement far ahead.",
+            "The trees that way have been violently slashed and hacked.",
+            "The forest has been cleared a little in that direction.",
+        ],
+        [
+            t("legacy.line_2013_208"),
+            "The trees seem to thin that way, sparsely pucking the mud.",
+            t("legacy.line_2015_209"),
+            "You can make out the mudplane somewhere through the trees.",
+            "You can see the forest's edge.",
+            "The treeline wanes perhaps a few hundred feet away.",
+        ],
+        [
+            t("legacy.line_2021_210"),
+            "The dense forest spreads ahead.",
+            "Foliage covers the tree-pocked mire.",
+            "The woods stretch ahead of you.",
+            "The canopy casts a dark path.",
+            "The mud stretches on and on beneath the trees.",
+        ],
+    ]

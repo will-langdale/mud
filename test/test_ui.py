@@ -11,6 +11,7 @@ import pygame
 import pytest
 
 from mud import ui
+from mud.events import Artifacts, MediaEvent
 
 
 def test_title_time_filter_uses_integer_colour_steps(
@@ -56,3 +57,60 @@ def test_recieve_does_not_rebuild_old_output_without_new_events() -> None:
 
     assert control.status == "prompt"
     assert control.listtrunc == []
+
+
+def test_recieve_handles_death_restart_event_batch(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Death emits text, artifacts, and restart media in one UI batch."""
+    control = object.__new__(ui.Control)
+    control.status = "display"
+    control.artifacts = []
+    control.listin = []
+    control.listtrunc = []
+    control.pending_events = [
+        "Death text.",
+        Artifacts([True, False, False]),
+        MediaEvent("bg", 255),
+        " ",
+        MediaEvent("reset", ""),
+        "Restart text.",
+    ]
+
+    class DummySfx:
+        def addsound(self, name: str, cue: str) -> None:
+            del name, cue
+
+    class DummyBg:
+        blackalphatgt = 0
+
+        def alpha(self, value: int, cue: str) -> None:
+            del value, cue
+
+    class DummyMusic:
+        def addmusic(self, music: tuple[str, int], cue: str) -> None:
+            del music, cue
+
+        def change(self, name: str, loops: int) -> None:
+            del name, loops
+
+    class DummyReset:
+        def addcue(self, cue: str) -> None:
+            del cue
+
+    def linetrunc(self: object, text: list[object]) -> list[list[str]]:
+        del self
+        assert text == ["Death text.", " ", "Restart text."]
+        return [["Death text."]]
+
+    control.sfx = DummySfx()
+    control.bg = DummyBg()
+    control.music = DummyMusic()
+    control.reset = DummyReset()
+    monkeypatch.setattr(ui.Control, "linetrunc", linetrunc)
+
+    ui.Control.recieve(control)
+
+    assert control.artifacts == [True, False, False]
+    assert control.listtrunc == [["Death text."]]
+    assert control.status == "display"
