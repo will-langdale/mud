@@ -13,7 +13,7 @@ format:
 
 # Run type checking
 check *ARGS:
-    uvx ty@latest check --output-format concise --exclude src/mud/legacy.py --exclude src/mud/ui.py {{ARGS}}
+    uvx ty@latest check --output-format concise {{ARGS}}
 
 # Run unit tests
 test *ARGS:

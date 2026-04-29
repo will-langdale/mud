@@ -1,0 +1,18 @@
+[credits]
+none = Find them in the earth.
+earth = Alone amongst the stone.
+stone = Lost beneath the endless mud.
+default = MUD
+full.1 = MUD
+full.2 = By Will Langdale
+full.3 =  
+full.4 = Created Summer/Autumn 2014 in Python and Pygame
+full.5 =  
+full.6 =  
+full.7 = MUSIC
+full.8 =  
+full.9 = Aphex Twin - aisatsana [102] (2014)
+full.10 = Daedelus - Country of Conquest (2014)
+full.11 =  
+full.12 =  
+full.13 = Thankyou for playing. Please let me know what you think.

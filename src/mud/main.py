@@ -6,5 +6,11 @@ import asyncio
 
 from mud.ui import main
 
-if __name__ == "__main__":
+
+def run() -> None:
+    """Run Mud's Pygame UI."""
     asyncio.run(main())
+
+
+if __name__ == "__main__":
+    run()

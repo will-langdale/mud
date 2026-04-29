@@ -1,15 +1,13 @@
-"""Runtime wrapper around the original Mud game engine."""
+"""Session wrapper around Mud's runtime engine."""
 
 from __future__ import annotations
 
 import asyncio
-import importlib
 import traceback
 from collections.abc import Awaitable, Callable, Iterable
 from contextlib import suppress
-from types import ModuleType
 
-import mud.legacy as legacy
+from mud.engine import runtime
 from mud.events import Artifacts, EngineEvent
 
 InputProvider = Callable[[], str | Awaitable[str]]
@@ -37,7 +35,8 @@ class GameSession:
         self.deaths = 0
         self.artifacts = [False, False, False]
         self.error_count = 0
-        self._engine = importlib.reload(legacy)
+        self._engine = runtime
+        self._engine.reset_state()
         self._configure_engine()
 
     async def run(self) -> None:
@@ -50,7 +49,7 @@ class GameSession:
                 self.artifacts = list(why.art)
                 self.output_handler(Artifacts(self.artifacts))
                 self.deaths += 1
-                self._reload_engine()
+                self._reset_engine()
             except InputExhausted:
                 raise
             except (SystemExit, KeyboardInterrupt):
@@ -62,7 +61,7 @@ class GameSession:
                 )
                 self.output_handler(traceback.format_exc())
                 self.error_count += 1
-                self._reload_engine()
+                self._reset_engine()
 
     async def run_script(self, inputs: Iterable[str]) -> list[EngineEvent]:
         """Run with scripted inputs and return all emitted events."""
@@ -87,10 +86,9 @@ class GameSession:
             self.quit_handler,
         )
 
-    def _reload_engine(self) -> ModuleType:
-        self._engine = importlib.reload(self._engine)
+    def _reset_engine(self) -> None:
+        self._engine.reset_state()
         self._configure_engine()
-        return self._engine
 
 
 async def run_script_async(inputs: Iterable[str]) -> list[EngineEvent]:

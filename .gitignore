@@ -24,8 +24,7 @@ site/
 # Build
 build/
 /src/build/
-/src/assets/*-pygbag.ogg
-/src/mud/assets/
+/src/mud/assets/audio/*-pygbag.ogg
 
 ##########################
 # Boilerplate .gitignore #
