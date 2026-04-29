@@ -1,0 +1,257 @@
+[items.lighter]
+first = The zippo is a battered steel affair.
+look = Beneath caked mud, the side of the lighter bears a red symbol.
+search = With filthy hands you pull the lighter apart. There is very little fluid left. You manage to piece it back together, though muck certainly now clogs the mechanisms.
+
+[items.fighter]
+first = The one-person aircraft is damaged beyond repair.
+look = The olive fuselage bears a single red symbol.
+search = 
+
+[items.stump]
+first = The long, mud-covered, blackened trunk lies directly across the way forward.
+look = The bark appears weak and crumbly, gnawed at by countless insects.
+search = The log teems with writhing, pullulating insect life, with something bigger moving beneath the horrid mess.
+
+[items.route]
+first = Though muddy, torn and battered, the route itinerary still bears some legible script
+look = Flicking through the pages, one section stands out through smears of grime: "but circle around and approach from west".
+search = Flicking through the pages, one section stands out through smears of grime: "but circle around and approach from west".
+
+[items.pages]
+first = Some papers from the plane have blown this way, caught, muddy and tattered in the brittle branches.
+look = Anything could be on what's left of the notes, but without searching them all it's hard to know what information remains, if any.
+search = 
+
+[items.swamptrees]
+first = Knarled black trees reach out of the swamp.
+look = The trees don't look strong enough to carry any weight, and too smooth to gain any purchase on.
+search = You can't find anything in the withered branches of the trees.
+
+[items.woodtrees]
+first = A thousand trees stretch into the distance around you.
+look = The trees don't look strong enough to carry any weight, and too smooth to gain any purchase on.
+search = You move from tree to tree but you can't find anything in their withered branches.
+
+[items.leeches]
+first = There are a handful of rapidly growing wormlike things hanging off your skin.
+look = You're covered in perhaps a dozen black worms, and they appear to be sucking at your flesh, growing as they do.
+search = The creatures are all over you - arms, legs, neck, and under your clothes.
+
+[items.sandtrap]
+first = The loose and sandy mud stretches on into the distance.
+look = The sandy mud seems a little thinner than the sucking mess you're traversed.
+search = You reach a tentative leg into the sandy mud and find yourself sinking far quicker and deeper than before.
+
+[items.trooptrap]
+first = A column of soldiers wearily plods through the sticky mud.
+look = The soldiers wear matching uniforms with blue armbands, mottled by mud and blood. They carry rifles, and the lone figure with the aerial pack leads them. The equipment they drag looks like heavy artillery shells.
+search = You cannot search the troops without approaching them.
+
+[items.stones]
+first = A series of standing stones rise around you.
+look = The smallest reaching to your head and the largest many times your height, hundreds of standing stones puncture the mud like a gigantic savage cemetery. The tops taper to often jagged peaks, no two seeming alike.
+search = You can find nothing in or around the stones - they mark the mud and nothing more.
+
+[items.cavetrap]
+first = The opening in the rock face is the only visible blemish in the endless cliff face.
+look = The fissure seems large enough to enter, and may provide respite from the sucking mud.
+search = You cannot see far into the dark of the opening, but you suspect this could be a cave system.
+
+[items.box1]
+first = Sitting obstinately in the mire, a small metal cache appears to have landed flat enough not to sink, yet.
+look = The ridging on the metal makes you think the cache may contain some sort of armaments.
+search = With a draining heave the metal creaks back. Inside are hundreds and hundreds of filthy machinegun bullets, shaken from their chains, and all but useless without a gun.
+
+[items.box2]
+first = Squat and sturdy, a wooden cabinet faces lazily toward the sky.
+look = Laying on its back, gravity seems to be all that holds the square wooden cabinet's door shut.
+search = It won't open. You can't work out what's stopping it: whether some sort of mechanism has collapsed or if something inside is somehow preventing the door opening out. Either way, you simply cannot open it, and the effort is leaving you deeply drained.
+
+[items.flare]
+first = Though bent and dented, the flare appears intact.
+look = The flare looks damp, but dry enough to work, worn, but not enough to be broken.
+search = With mucky fingers you prise the flare from the gun. Everything is as it should be: firing mechanism, flare, trigger. This can certainly be used, and with shaking, filthy hands you reconstruct the fragile flaregun.
+
+[items.box3]
+first = Shot through from every side, a large crate languishes in the mud at a perilous angle.
+look = The biggest crate in the area, you hold out little hope for what's inside given the grievous damage done to it.
+search = 
+
+[items.medkit]
+first = The airtight metal case appears to have survived the mire unscathed.
+look = It's all that remains from the plane's medical supplies thanks to its protective case, but it could be vital.
+search = Inside the case, the two syringes of adrenaline and hydrocortisone are undamaged and ready to be uncapped and used at a moment's notice.
+
+[items.box4]
+first = A long, flat box is all but buried in the mire.
+look = You can see flecks of green through the thickly-caked mud of the case, though you're unsure whether you'll be able to prise it open.
+search = 
+
+[items.bodies]
+first = Your gut clenches. There are so many dead, so many lifeless in the mud.
+look = You cannot bear to look at each body for more than a moment, but you notice that though all seem to be wearing olive-green uniforms, some bear a red symbol, and others blue.
+search = Gagging slightly you try searching a few of the bodies. Dogtags with names you don't recognise, guns so riddled with mud you'll never get them clean enough to work, and various shattered tools of war: binoculars, water canteens, bandages smeared with mud, all unusable. As you search one body your fingers slip into a huge fleshy tear down the man's back, and you vomit profusely. You stop searching.
+
+[items.boat]
+first = Pushing through the reeds around the waterway you discover a length of log trapped in the bed. Though rancid and decaying, it's buoyant enough that it may support some of your weight.
+look = The log is festering, but it looks strong enough to hold the weight of your torso, perhaps.
+search = You find a few crawling insects that you bat away.
+
+[items.water]
+first = The dark river moves slow and forcefully ahead of you, and you are sheltered by the rushes around you.
+look = The water ahead is clear and black, unimpeded by the rushes, and you see nothing underneath. It look slow but strong, and you don't know how to swim.
+search = From under the surface you venture a leg into the moving body of water. It is pulled from you with enough strenth that you're almost pulled away, but you regain your balance.
+
+[items.aagun]
+first = The artillery sinks slowly into the thick slop.
+look = The gun is large, even half-sunk, towering over you. The long barrel faces the sky, and you can make out a space for shells just where it meets the mud, with two large iron wheels entrenched in the mire. This is an anti-aircraft gun.
+search = The gun has sunk so far into the mud you can't search it thoroughly, though the stink of gunpowder and the black debris around the barrel confirm that it was fired recently. There are muddy handprints around the wheels: someone tried desperately to stop the artillery sinking. The mud around the gun's base is pitted, as if several people have recently disturbed the mire.
+
+[locations.plane]
+name = at the plane
+first = The hot, twisted metal of your aircraft sizzles as it sinks into the mire.
+look = a fighter aircraft on the horizon, stuck slowly sinking into the mud
+search = You pace the mud around the aircraft.  Amongst the unidentifiable, hissing contortions of metal debris you see the long muddy wound the crashed plane has carved into the mire. It leads west.
+restriction = 
+
+[locations.snake]
+name = at the riddled treestump
+first = The black trunk of a titanic fallen tree crosses your path. Though massive, it looks fragile, riddled with rotten holes.
+look = a flat expanse of mire, with some large, long object far in the distance
+search = A few crops of small faded plants and swarms of tiny insects cover the landscape, but nothing else is to be found except the hulking log.
+restriction = The hulking log blocks your path. What do you do?
+
+[locations.sand]
+name = at a sandy, muddy mess
+first = The bleak mud ahead appears less viscous, with fewer drab weeds able to take root.
+look = mud, as far as the eye can see
+search = There is nothing within the sandy mud, and you find nothing but insect bites and exhaustion.
+restriction = The only way forward is through the sloppy sandy mire, but the loose texture makes you hesitate. You can proceed, if you wish.
+
+[locations.sand_in]
+name = in the thick of the sandy morass, and you are sinking quickly
+first = Plunging into the sandy mud you quickly find its fine consistency and depth simply replaces difficulty of movement with the exhausting need to move further and more consistently to avoid being sucked under. You cannot stop.
+look = an endless sandy morass
+search = There is nothing within the sandy mud, and you find nothing but insect bites and exhaustion.
+restriction = 
+
+[locations.debris]
+name = at the strewn debris
+first = Ahead lies a deep but slowly-closing rut where the plane gouged its way across the bog. Unidentifiable blackened plane parts lean out of the muddy morass, sinking, with scattered papers, bags and mechanical detritus peppering its surface.
+look = some wreckage peppering a vast mud flat
+search = Searching the area reveals nothing further to the handful of containers that seem salvagable, sinking into the mire.
+restriction = 
+
+[locations.fog]
+name = in an endless bogland, surrounded by fog
+first = After a while the air takes on a chill, and your skin bristles. Before you know it, you find yourself utterly engulfed by fog, knee-deep in the mire.
+look = an expanse of mud disappearing into a bank of cloud
+search = You plunge your hands into the mire at random, looking for something in the haze. Your arms caked in filth you stand, and all you have discovered is more mud.
+restriction = 
+
+[locations.blanksw]
+name = in an endless bogland
+first = The turgid mud stretches endlessly.
+look = endless mud
+search = Mud stretches forever, on every side. Yet as you stagger about, your eyes flicking about the filth, something gnaws at your gut. You sense there is something to be found here, but that it eludes you for now. It is with deep unease that you cease your efforts.
+restriction = 
+
+[locations.log]
+name = in an expanse of mud, dotted with knarled shrubbery
+first = Larger flora begins to dot the expanse of mud. Something unseen flutters in the wind.
+look = a massive field of mire, with a few plants here and there
+search = You can find nothing further among the scattered shrubs.
+restriction = 
+
+[locations.swamp]
+name = at the swamp
+first = The mire becomes more and more fluid until you find yourself in swampland. Bent, gloomy trees find root between patchy beds of tall, sharp rushes. You are chest deep in thick, murky water.
+look = a sparse wetland, with rushes and trees
+search = You slosh aimlessly about, the deep water tiring you quickly. You search about the rushes for something useful, but there is nothing to be found.
+restriction = 
+
+[locations.gun]
+name = at the abandoned gun
+first = After some time you notice a shape twisting strangely from the bog. Once you get closer, you see it is a large mobile gun emplacement, lopsided and half-sunk. The smell of gunpowder hangs in the air, hot and dense. The mud is slowly claiming the sinking artillery.
+look = a vast flat bog, though perhaps there's something on the horizon
+search = You pace about the mire, and realise with a start that the pits and churns around the gun are the remains of footprints. They stretch west.
+restriction = 
+
+[locations.cave]
+name = at the endless cliff
+first = You eventually reach a dark cliff that stretches as far as you can see. You notice a fissure a short distance from you large enough to enter.
+look = a field of mud, with a rocky formation on the horizon
+search = No matter how far along the cliff you go, there is nowhere to stop and rest but the fissure. No matter how far you travel, the cliff continues to stretch as far as you can see. You shudder a little.
+restriction = 
+
+[locations.cave_in]
+name = lost deep in the endless black of a cave system
+first = 
+look = black
+search = Without light, you find nothing hidden in the endless black.
+restriction = 
+
+[locations.wood]
+name = in dense woodland
+first = The mire has taken on a slightly richer brown and larger plants have taken hold. You are shaded by the leafy arbour overhead, surrounded by a dense knot of trees, shurbs and vines rooted somewhere deep in the thick mud.
+look = a dense thicket beginning to take hold on the muddy plain
+search = Trudging between the trees in the thick mud you find strand disturbances. Could they be footsteps? They lead east.
+restriction = 
+
+[locations.wood_in]
+name = deep in the mud of the dense forest
+first = As you move deeper into the woodland the trees seem to swallow you. You lose track of where you are, and more importantly, where you came from.
+look = the thick foliage growing thicker still
+search = 
+restriction = 
+
+[locations.river]
+name = at the waterway
+first = The line of rushes stops suddenly, and you realise you are on the banks of a waterway. Sunk up to the chest but sheltered by the reeds you can feel the current pulling strongly east just ahead. You realise you cannot follow the river without entering the open water.
+look = a clear path of water weaving through the swamp's rushes, very far away
+search = You wade endlessly, tiring fast, but you find nothing more amongst the rushes.
+restriction = 
+
+[locations.troops]
+name = at the boulders
+first = Monolithic boulders appear as you continue, jutting from the bog. Something whispers through the air - could it be voices? You don't understand.
+look = vast boulders beginning to rise from the muddy field, and perhaps mountains far in the distance
+search = You wander aimlessly between the stones, your feet heavy in the mud, and no two seem alike. The whispers about them seem to form strange and eerie dischords, forever changing.
+restriction = 
+
+[locations.troops_in]
+name = unseen, flat against a towering stone, mere feet from some soldiers
+first = You stagger towards a group of soldiers marching through the mud away from you. Moving from stone to stone you observe: one wears a pack with a large aerial stretching skyward from it, topped by a small blue flag. Behind them they drag a sled of equipment with ropes taut against their sloping backs. It is too late once you realise you're too close - you could be discovered at any moment. Fearfully you flatten yourself against the nearest standing stone, unseen, but slowly sinking.
+look = the gigantic standing stones scattered across the mudflats like huge gravestones, with something moving amongst them far ahead
+search = If you move, you'll surely be discovered.
+restriction = You're so close you can hear their grunts of effort. Pinned, gasping, behind the stone, you can approach or fall back.
+
+[locations.blankse]
+name = in an endless bogland
+first = The turgid mud stretches endlessly.
+look = endless mud
+search = Mud stretches forever, on every side. Yet as you stagger about, your eyes flicking about the filth, something gnaws at your gut. You sense there is something to be found here, but that it eludes you for now. It is with deep unease that you cease your efforts.
+restriction = 
+
+[locations.blanknw]
+name = in an endless bogland
+first = The turgid mud stretches endlessly.
+look = endless mud
+search = Mud stretches forever, on every side. Yet as you stagger about, your eyes flicking about the filth, something gnaws at your gut. You sense there is something to be found here, but that it eludes you for now. It is with deep unease that you cease your efforts.
+restriction = 
+
+[locations.blankne]
+name = in an endless bogland
+first = The turgid mud stretches endlessly.
+look = endless mud
+search = Mud stretches forever, on every side. Yet as you stagger about, your eyes flicking about the filth, something gnaws at your gut. You sense there is something to be found here, but that it eludes you for now. It is with deep unease that you cease your efforts.
+restriction = 
+
+[templates]
+movement = You manage to go {direction}.
+look_direction = You see {look}.
+room_return = You are {name}.
+forest_tracks = The mud has been disturbed, and the tracks lead {direction}.
+think_single = You can {option}.
+think_many = You can {options}, or {last_option}.

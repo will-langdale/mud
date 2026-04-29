@@ -1,0 +1,133 @@
+[system]
+help = Your head is murky and it is a tremendous effort to recall anything at all. You can GO NORTH, SOUTH, EAST or WEST. You can LOOK in directions and at objects. You can SEARCH objects, or just the area you're in. You can THINK about what options are available at each location. You can cry for the only HELP you're getting.
+invalid = You stand still, exhausted, sinking slowly into the mud. Do you need HELP?
+confused = You don't know what to do or where to be. Do you need HELP?
+blocked = You can't go that way right now.
+unreachable = You try to move, but you can't reach to do that.
+alone_wait = Alone, you wait to die.
+where_go = Where do you want to go?
+no_pages = No pages remain in the scrubland.
+medkit_hint = Surely the plane had some medical supplies?
+no_options = There is nothing to do but move on.
+exit_confirm = Are you certain? All you've discovered will be lost.
+title_prompt = Press [SPACE] to play
+space_prompt = [SPACE]
+
+[artifacts]
+intrusion = A thought that's not your own eats into your mind.
+earth = The open sky is an endless blue, find them in the earth.
+stone = The sound of static fills the air, alone amongst the stone.
+smoke = Lost beneath the endless mud a wisp of smoke creeps by.
+smoke_found = You turn and turn, searching and searching, until there is nothing but mud, forever. Mud is all that you are. Mud is all you can be. Lost beneath the endless mud a wisp of smoke creeps by.
+
+[actions.stump]
+climb = You feel for two reasonably sturdy handholds and with a grunt, haul yourself from the mud. Instantly the trunk crumbles beneath you, and you are plunged into the writhing mess of worms, beetles and insects within. You flail wildly, grasping at parts of the rotting log that crumble in your fists, your entire body covered in crawling animals and sucking mud. You feel a sharp pain in your left hand. Somehow you struggle to your feet, utterly covered in mud and with creeping insects in your hair and clothes. With disgust, you clear them off as best you can, but you stop dead as you clean you hands. The puncture marks are small, but the skin is swelling and a widening patch of blotchy crimson is darkening your palm.
+climb_item_first = The massive trunk has been cleaved in two, with easy passage between either side.
+climb_location_first = The massive trunk has been cleaved in two, with easy passage between either side.
+climb_search = The log teems with writhing, pullulating insect life. The lurking snake is nowhere to be seen.
+smash = You punch the log and you fist sinks through with such ease that you're instantly shoulder-deep and off-balance. Pulling your arm out brings away a significant chunk of the log, and with it a teeming multitude of beetles, worms, and insects that cover your arm, and fall into the mud around you. Shaking as many off you arms and hand as possible, you pull away more of the log, until there is enough of a gap to squeeze through. Now covered in crawling animals, you inch your way through, and it is only once firmly between the two halves that you hear an angry hiss. The bite is so powerful that your hand is wrenched away as the snake escapes. You pass the log, and the puncture marks are small, but the skin is swelling and a widening patch of blotchy crimson is darkening your hand.
+smash_item_first = The massive trunk has been cleaved in two, with easy passage between either side.
+smash_location_first = The massive trunk has been cleaved in two, with easy passage between either side.
+smash_search = The log teems with writhing, pullulating insect life. The lurking snake is nowhere to be seen.
+broken_name = at the riddled treestump, split in two
+wade = The mud is deep and sticky here. It takes a great deal of time and considerable effort, but you circumnavigate the giant trunk. Covered to the chest in mud, with splatters across your face and in your hair, you can continue.
+through = You trudge through the mud that lays between the two halves of the collapsed trunk, and can go in any direction.
+
+[actions.forest]
+wood_climb = Every time you work your fingers into the tree's bark the strength to lift yourself leaves you. You stand, holding the tree, sinking powerlessly into the mire.
+search_empty = You wander the immediate woods, the mire sucking at your steps, but there's no traces or markings to be found.
+edge = You're getting towards the edge of the woodland, the mud still dragging at you with every step.
+captivity_death = The trees begin to be replaced by stumps, and the forest clears around you. You wearily plod forward, your legs screaming with the effort of your constant trudge, yet you think your steps are becoming easier - yes - the mud is becoming shallower. You see a wooden palisade ahead of you, and a makeshift gate. Before you even notice them two uniformed figures in red tunics are rushing towards you, their guns raised. Their eyes dart about your body, until their expressions change, and they toss their weapons to one side. They grab you forcefully, and drag you backwards towards the wall. You vision reels upwards and you go limp, staring at the infinite sky. Shouts come from all around and you're taken inside a small tent, a figure strapping you firmly to a bed. There is fear in their eyes. Someone in a white coat puts his hand around your jaw and firmly pushes your head back and to the right. The tent stinks of decay. You feel a slight prick in your neck. You sink softly to sleep.
+
+[actions.swamp]
+tree_climb = You find a tentative hold on a tree and wrench yourself up. The tree collapses immediately, and you are plunged into the filthy water. You burst from the surface, gasping for air, covered in the rotting filth of the swamp.
+leeches_begin = You can feel movement beneath the water.
+
+[actions.leeches]
+remove = You pull the wormlike things painfully from your arms and legs, leaving slowly bleeding wounds. You take off your shirt, wind it into a tight coil, and use it to bat them from your back and chest. It takes considerable time, but you carefully remove each of the black creatures while slowly sinking further and further into the mud.
+
+[actions.lighter]
+spark = Flicking the lighter you produce a short-lived flame.
+
+[actions.search]
+fighter_searched = The plane's first aid kit is gone, perhaps wherever the cockpit door went.
+fighter_found = The plane's first aid kit is gone, perhaps wherever the cockpit door went. You find a lighter wedged beneath the aircraft's seat.
+pages_search = You scrabble helplessly about the mud, snatching battered sheets from prickly branches and smearing away mud with mud-smeared hands.
+pages_found = Though each step is gruelling, you grab page after page. At last you have them all. They are a tattered section of the plane's route itinerary.
+
+[actions.sand]
+escape = You feel the mud becoming more solid beneath you, sticky but relatively shallow.
+death = Faltering for only a moment you sink irrevocably, and you are helpless as the mud and sand close over your face. You realise that you will never breathe or see again. The mire has taken you.
+
+[actions.troops]
+approach_death = You stagger from the monolith, staring grim and square at the soldiers' backs. Each pace aches as you slowly get closer and closer, until one glances behind. A shout goes up and the dragged ropes are dropped, rifles haphazardly drawn with gaunt, fearful faces behind the sights. Silence hangs in the air. You take a step and a rattle of shots accompanies explosions of pain across your body. You drop, shattered, the world blurring to nothing.
+fall_back = You remain pressed anxiously against the monolith, you heartbeat slowing as the soldiers move ahead of you.
+voices = You think you hear voices, but you can't be certain.
+
+[actions.stones]
+listen = Endless dry whispers whip around the standing stones, their rough tops and erratic placement creating strange tunnels and echoes, distorting and bending every sound.
+troops_close = The voices of the soldiers warp and strain around the standing stones.
+climb = The stones are too vast and smooth to scale.
+
+[actions.cave]
+enter = You take a few tentative steps into the rocky opening. You lean forward, peering into the gloom, and sense a yawning depth opening just ahead. You shiver, your stomach cold. You try to find a stable place on the rock - anywhere that you might rest and finally stand still, even for a moment. You step forward, exhausted. Your foot twists painfully on a slippery rock, plunging you headlong and downwards, inescapably, into the dark of the cave.
+fall = In total darkness you are mercilessly thrown against the tunnel's steep and jagged edges.
+landing = You tumble endlessly, sightless. For a fleeting moment the constant pummelling ceases, and in the black deep it feels as though you're weightless, floating. You feel your bones crunch as you hit the mud, and are quickly subsumed. Writhing with panic you wrench yourself to your feet. You may be bleeding, you may be broken in a dozen ways, and you may be coated in filth, but you are deep under the earth, and it is deathly dark in all directions. You continue to sink into the mire.
+sense_small = You sense something just out of your touch, and the chamber seems to press in an all sides.
+sense_medium = The bleak cavern walls seem some way off, though how far you cannot tell.
+sense_large = Your movements echo off into an impossible darkness, and you feel overwhelmed by silent space.
+sense_unknown = The infinite dark air above seems to vibrate with sheer space. You turn to somehow escape it and find the rock all around you, hot, close, still.
+return = Warily you edge back into the cave system through the tight passage you left through, but are quickly lost once more in the impossible depths of the rock.
+
+[actions.flare]
+after_look = The flare looks dry enough to work, but you've run out of flares.
+after_search = Prising apart the flare with filthy hands it all appears to be in working order, but it's useless now that you've fired the flare.
+fire = Holding the gun aloft you fire the flare high into the air. The light hangs eerily in the air, descending silently, slowly.
+
+[actions.boxes]
+box3_empty = There is nothing useful left inside.
+box3_found = It looks as the the box may have contained a rudimentary raft or lifejacket, but it's been riddled with holes and is beyond use. Deep in the container you find a loaded flaregun.
+box4_empty = Nothing useful remains.
+box4_found = It's full to the brim with black mud. Tentatively you reach in, feeling carefully around the inside. Long filthy lengths of what could be bandages curl about your arms, and you are pricked once or twice by what you discover, as you hastily withdraw, to be empty syringes. Finally, your hands close around a small metal case. Inside are two prepared shots of adrenaline and hydrocortisone.
+
+[actions.medkit]
+use_poisoned = You fumble, and your stomach knots as you nearly drop the syringes. Wide-eyed and shaking, you slide the hydrocortisone into your palm and inject. Wiping your forearm clean as best you can, you pray that you've managed to find a vein with the adeneline. Your heartbeat confirms. You are in desperate need of medical attention, but there's life left in you for now.
+use_unneeded = There is plenty wrong with your flagging body, but there's nothing in the emergency kit that will do you any good right now.
+
+[actions.boat]
+enter = Your muscles shaking with painful effort, you drag the floating log from the reeds it's buried within, pulling the sharp rushes back with your bare hands. It takes considerable time, but the moment the log is partly out in the waterway it's yanked firmly downstream with surprising strength, and it's all you can do to hang on. Gasping for breath, you realise the log isn't quite as buoyant as you thought - as you're dragged downstream you have to kick wildly to keep afloat, and you begin to panic as you realise if you don't continue your exhausting flailing you will drown, and you will die. You are utterly at the mercy of the river. It's not long before you notice a split in the water ahead, and you are powerless to decide which way you'll be taken. Alone and tired, freezing and aching in the water, the log lurches.
+death = You appear to be going to the right when a crosscurrent drags at your leg and rips you under the water, pulling you left. Already deathly weary, you kick with all your might, your lungs on fire and desperate for air. It's not enough. Your mouth bursts open to suck in air, and your chest fills with the icy, grimy water. You choke to blackness.
+swept_right = Still thrashing to stay afloat, the log pulls you to the right. The current speeds. You are having to kick harder and harder to keep your head above the water, and you're not sure how much longer you can carry on. You last perhaps a few minutes. The sky twists as you take your last look at it, open wide above you, and you sink into the inky abyss, your body broken, torn and spent. You feel your heart slow. The world slips away.
+nightmares = Endless nightmares run through the dark.
+restart = Find them in the earth. Alone amongst the stone. Lost beneath the endless mud. You awaken face up, still, a canopy of trees above you. All is quiet and calm, and the desire to lie still and rest your bludgeoned body is overwhelming. The dank smell of rot fills the air. Something gives beneath you, just an inch, and you realise that you are once more sinking. You struggle, bruised and battered, to your feet. The mud rises quickly, and you must move on or perish.
+
+[actions.water]
+enter = You dive forward into the waterway and the current rips you along. You kick wildly, writhing in the water, but a powerful riptide tugs you down. You're desperate for breath.
+death = It never comes. Your mouth, involuntarily, pops open like a burst balloon, and you suck down the icy filthy water. Choking and flailing you're sucked into the dark of the river. The world goes black.
+escape = Suddenly your outstretched hand is caught violently in a root, and you grasp at it with what strength you have. Though the sharp tendril cuts deep into your hand you haul yourself back to the reed bed, and burst choking from the dark water, your feet finding the muddy floor. Coughing and haggard, you feel mud rising to your submerged ankles, and you must move on.
+
+[actions.fog]
+inside_first = Each direction looks the same, and no landmarks can be seen through the thick cloud.
+escape = The frigid cloud gives way to a thin mist, and you emerge from the fog.
+return_first = After a while the air takes on a chill, and your skin bristles. Before you know it, you find yourself utterly engulfed by fog, knee-deep in the mire.
+
+[status.sinking]
+trouble = You're having trouble shifting your weight.
+warning = Looking down you see you're sinking dangerously deep into the mud.
+stuck = You flounder deep in the mud, utterly stuck.
+death = The mire closes over your face, and it's not long before your aching lungs force you to choke down the suffocating mud.
+face_cave = You face barely tops the mud in the black of the cave. You feel it ooze gently up around your ears and cheeks.
+face_open = You face the giant, empty sky, your face barely above the mud's surface. You feel it ooze gently up around your ears and cheeks.
+chest = Slowly you sink further and further, helplessly into the mud. Your abdomen. Your chest. Your shoulders.
+legs = You attempt to move your legs. Sucked up to the thigh, you begin to shake as you realise you cannot move.
+
+[status.poison]
+death = You struggle for breath and cannot find it. Blood pounds in your ears, your skin an inky violet. Collapsing into the mud you sink slowly beneath, wracked with paralysing pain.
+severe = Your chest is beginning to seize up and your hands have turned a dark purple, deepening quickly.
+early = The puncture marks have turned black, and your hands and arms are rapidly turning a murky red.
+
+[status.leeches]
+poisoned = You feel a sudden pain from one of the creatures on your arm. Knocking it off you see rapidly darkening punctures on your skin.
+
+[status.time]
+death = You are exhausted to the marrow of your bones. You take a step and realise that it is simply your last. You fall to your knees. You collapse bodily into the mire. The mud quietly subsumes you, and you convulse weakly as you choke to death in a dark muddy grave.

@@ -1,5 +1,0 @@
-[plane]
-name = at the plane
-first_sight = The hot, twisted metal of your aircraft sizzles as it sinks into the mire.
-look = a fighter aircraft on the horizon, stuck slowly sinking into the mud
-search = You pace the mud around the aircraft.  Amongst the unidentifiable, hissing contortions of metal debris you see the long muddy wound the crashed plane has carved into the mire. It leads west.

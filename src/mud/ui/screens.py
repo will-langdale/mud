@@ -4,14 +4,14 @@ from __future__ import annotations
 
 import pygame
 
-from mud.engine.text import TextStore
+from mud.engine.text import TextAssets
 from mud.resources import audio_path
 from mud.ui import text as ui_text
 from mud.ui.background import Smoke, TimeFilter
 from mud.ui.constants import BGGREY, BLACK, BLUE
 from mud.ui.text import Bodycredits, Bodytext, TitleText
 
-TEXT = TextStore.load()
+TEXT = TextAssets.load()
 
 
 class EndMenu:
@@ -47,7 +47,7 @@ class TitleMenu:
         self.plane = plane
         self.smokes: list[Smoke] = []
         self.ticks = pygame.time.get_ticks()
-        self.text = "Press [SPACE] to play"
+        self.text = TEXT.system.title_prompt
         self.textprint = Bodycredits(self.text, (400, 560))
         self.ticks2 = pygame.time.get_ticks()
 
@@ -98,25 +98,25 @@ class EndCredits:
         """Draw the credits for the collected artifact state."""
         pygame.draw.rect(surface, self.bgcol, self.bgrec)
         if self.artifacts == [False, False, False]:
-            self.credtext = TEXT.get("credits.none")
+            self.credtext = TEXT.credits.none
             self.credprint = Bodycredits(self.credtext, (400, 200))
             self.credprint.draw(surface)
         elif self.artifacts == [True, False, False]:
-            self.credtext = TEXT.get("credits.earth")
+            self.credtext = TEXT.credits.earth
             self.credprint = Bodycredits(self.credtext, (400, 200))
             self.credprint.draw(surface)
         elif self.artifacts == [True, True, False]:
-            self.credtext = TEXT.get("credits.stone")
+            self.credtext = TEXT.credits.stone
             self.credprint = Bodycredits(self.credtext, (400, 200))
             self.credprint.draw(surface)
         elif self.artifacts == [True, True, True]:
-            self.credtext = [TEXT.get(f"credits.full.{i}") for i in range(1, 14)]
+            self.credtext = list(TEXT.credits.full)
             lineh = ui_text.body_font().get_linesize()
             for i, v in enumerate(self.credtext):
                 line = Bodycredits(v, (400, 100 + lineh * i))
                 line.draw(surface)
         else:
-            self.credtext = TEXT.get("credits.default")
+            self.credtext = TEXT.credits.default
             self.credprint = Bodycredits(self.credtext, (400, 200))
             self.credprint.draw(surface)
 
@@ -153,7 +153,7 @@ class TextBox:
             self.box.set_alpha(self.currentalpha)
 
         if display is True:
-            space = Bodytext("[SPACE]", (5, self.lineh // 2))
+            space = Bodytext(TEXT.system.space_prompt, (5, self.lineh // 2))
             space.draw(self.box)
 
         surface.blit(self.box, (50, 50))

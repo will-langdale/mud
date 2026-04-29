@@ -1,0 +1,159 @@
+[random.movement]
+1 = You stumble %s.
+2 = You stagger %s.
+3 = You manage to go %s.
+4 = You think you've gone %s.
+5 = It's almost certain you've gone %s.
+6 = You went %s, but--, yes.
+7 = You try %s.
+8 = You went %s, yes.
+
+[random.mud]
+1 = The mud sucks at your feet.
+2 = Each step aches.
+3 = The stench of rotting flora is everywhere.
+4 = You spit mud from your mouth.
+5 = Something brushes you beneath the mud, and is gone.
+6 = You can taste gravel between your teeth.
+7 = You wipe muddy snot from your upper lip.
+8 = Your tongue sticks at your dry palate.
+9 = Your breath scratches your raw throat.
+10 = A shift in the mud briefly releases the unmistakable smell of decaying flesh.
+11 = The air is putrid.
+12 = You wipe a brown-red moisture from your eyes.
+13 = The rising heat from the bog is suffocating.
+14 = Flies hop about the mud's surface.
+15 = You try to wipe wet mud from your eyes and face.
+16 = Mud has caked dry about your thighs, heavy and stiff.
+17 = Your muscles ache from effort.
+18 = Your collar worries at insect bites around your neck.
+19 = You fall. Cursing, you try to clean your hands of the slop as best you can.
+20 = Your foot snares on something in the mire, but you free it.
+21 = You try to rub some of the dried mud from your matted hair.
+22 = Your head pounds.
+23 = You're desperately thirsty.
+24 = Insects choke the air around you.
+25 = You need to sit and rest, but there is nowhere.
+26 = Standing still for a moment you begin to sink, and must move on.
+27 = The buzz of insects is incessant.
+28 = A misstep, and your leg sinks deep into the mire. You pull it out, exhausted. Wet mud glistens up to your hip.
+29 = Sweat remoistens the mud about your face.
+30 = Your forearms are red from sunburn, mottled with mud.
+31 = You fall but catch yourself on a rotting stump. Standing, mud mixes with the blood of a jagged wound across your palm.
+32 = Touching your neck you find dried blood from an unseen wound.
+33 = Your head throbs.
+34 = You feel dizzy.
+
+[random.time]
+1 = The afternoon sun beats down relentlessly.
+2 = The sun has definitely sunk in the sky.
+3 = The exhaustion of constant movement is wearing heavily on you.
+4 = The low, orange sun casts long shadows across the mud.
+5 = The sky's dark blue deepens swiftly.
+6 = You are wracked, utterly, utterly wracked by tiredness. Every fibre of your body contorts with pain. Strange shapes cross your vision and you hear whispers and rustles and shouts that are terrifyingly real.
+7 = It is a night of absolute black.
+
+[random.exhaustion]
+1 = Your legs ache from constant movement, and you begin to slow.
+2 = You must rest - you're desperate to rest.
+3 = You think you see something on the horizon, but it's hard to make out.
+4 = You don't know how much longer you can keep this up.
+5 = Your right calf begins to cramp. It feels as though the muscle is tearing itself from your leg.
+6 = Your entire body begins to slow from the exertion.
+7 = Your head lolls back and you stare into the endless sky. You cannot go on.
+8 = You have to stop.
+9 = You cannot go on any longer.
+10 = Your eyes explode with pain as wet sand splashes into them. The irritation is unbearable, and you are blind.
+11 = Your heavy clothes drag in the muck.
+
+[random.waiting]
+1 = Unable to stand still, you try to pace in place, slowly getting more and more exhausted.
+2 = Eyes glazed over you shift your weight painfully from one leg to the other for a while. It brings no relief.
+3 = From the second you stop moving, the surge of pain in your tired muscles nearly surpasses the agony of pushing on.
+4 = Your slow sinking reminds you that you can never stop.
+5 = You halt for a moment to give yourself the illusion of rest. You are not fooled.
+
+[random.shouting]
+1 = You cough a few times, and spit up mud.
+2 = You choke out a quiet rasp.
+3 = You are too scared to make a sound.
+4 = Your chapped lips are too agonising to open.
+5 = Your lungs empty silently, and you nearly fall to your knees.
+6 = You contort your lips and tongue but cannot form a word.
+7 = You don't remember how.
+8 = You open your mouth, and when nothing happens you feel intensely ashamed.
+9 = How?
+
+[random.fog]
+1 = The endless fog presses in on you.
+2 = Every hair on your arms has pricked up in the damp cold.
+3 = You think you see a shape moving somewhere ahead.
+4 = You turn to check your progress, and lose track of which way you were facing.
+5 = Your footprints disappear into the knee-high mire.The cold air numbs your fingers.
+6 = That way is north.
+7 = That way is east.
+8 = That way is south.
+9 = That way is west.
+10 = You hear a muddy splash somewhere deep in the fog.
+11 = You can taste the moisture in the air, but it cannot quench your thirst.
+12 = There is no start, no end, no progress.
+13 = There is a very slight breeze against your face.
+14 = The wind tousles at your muddy hair from behind.
+15 = The back of your right hand feels a chilly pang.
+16 = You shove your left hand in your pocket to keep it warm.
+17 = You're unsure if you've walked a mile or a few feet.
+18 = You lose some feeling in your toes.
+
+[random.leeches]
+1 = Thick, black creatures are all over your body.
+2 = You can feel movement from under your clothes.
+3 = Some black worms fatten on your legs.
+4 = Something writhes against your skin.
+5 = Dark worms pulsate and grow on your flesh.
+6 = The creatures on your skin are muscular and deathly dry to touch.
+7 = Wormlike creatures are feasting on your flesh.
+8 = You feel the flick of a worm against your collarbone.
+9 = You can feel things moving on your back, and you don't know how many.
+10 = You're covered in writhing, pulsating wormlike things.
+
+[random.woods_lost]
+1 = You find yourself in a small clearing.
+2 = You reach a small copse, with blank mud surrounding a tight knot of trees in the centre.
+3 = The wood begins to close in and your present path becomes untenable.
+4 = The foliage around you begins to look a little greener.
+5 = Insects begin to swarm around you, and you cannot continue.
+6 = The trees around you have become wilted and decayed.
+7 = A caw startles your gaze upwards. Three black birds regard you for a moment, before taking flight into the foliage.
+8 = A tree catches your attention. At first it looks as though it's been intricately carved, but looking closer it's the strange grain of the bark.
+9 = You pause, unsure whether to continue this way.
+10 = Trees twist together ahead, and you can't continue.
+11 = An unthinkable screech pierces the air and stops you in your tracks.
+12 = A low rustle high in the trees seems to circle you.
+13 = The trees around you seem unfathomably tall.
+14 = Something reeks. Looking about you realise that there are three bodies, almost completely rotten, hanging from a branch high in the canopy. You feel nauseous, you have to keep moving.
+
+[random.woods_correct]
+1 = The trees stretch on and on, but you notice a small scrap of red cloth fluttering amongst the branches of one.
+2 = Some of the branches in that direction seem snapped and broken.
+3 = A few of the trees have been felled, leaving a clear pathway.
+4 = There are splashes of red daubed across a few trees that way.
+5 = You notice some small round burns on a trunk that way.
+6 = You think you can make out movement far ahead.
+7 = The trees that way have been violently slashed and hacked.
+8 = The forest has been cleared a little in that direction.
+
+[random.woods_escape]
+1 = You can see light through the trees, and beyond it the plane of mud.
+2 = The trees seem to thin that way, sparsely pucking the mud.
+3 = The trees - you think that's the way you came into the wood.
+4 = You can make out the mudplane somewhere through the trees.
+5 = You can see the forest's edge.
+6 = The treeline wanes perhaps a few hundred feet away.
+
+[random.woods]
+1 = The trees stretch across the churning mire as far as you can see.
+2 = The dense forest spreads ahead.
+3 = Foliage covers the tree-pocked mire.
+4 = The woods stretch ahead of you.
+5 = The canopy casts a dark path.
+6 = The mud stretches on and on beneath the trees.

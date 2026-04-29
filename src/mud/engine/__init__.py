@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from mud.engine.engine import EngineOutcome, GameEngine, TraversalResult, build_world
-from mud.engine.exceptions import InputExhausted, MissingTextError
+from mud.engine.exceptions import InputExhausted, MissingTextError, TextAssetError
 from mud.engine.session import (
     GameSession,
     InputProvider,
@@ -22,6 +22,7 @@ __all__ = [
     "MissingTextError",
     "OutputHandler",
     "QuitHandler",
+    "TextAssetError",
     "TraversalResult",
     "build_world",
     "run_script",

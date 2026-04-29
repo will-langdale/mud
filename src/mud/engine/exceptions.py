@@ -32,3 +32,7 @@ class MissingTextError(KeyError):
     def __str__(self) -> str:
         """Return a readable error message without KeyError repr noise."""
         return f"Missing text asset key: {self.key}"
+
+
+class TextAssetError(ValueError):
+    """Raised when bundled text assets are malformed."""

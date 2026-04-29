@@ -259,7 +259,7 @@ def test_active_leeches_can_be_pulled_off_before_they_are_held() -> None:
     asyncio.run(engine.interpret(engine.parse("pull off worms")))
 
     leeches = engine.state.condition("leeches")
-    assert engine.text.get("legacy.line_0391_033") in events
+    assert engine.text.actions.leeches.remove in events
     assert leeches.active is False
     assert leeches.cleared is True
     assert leeches.count == 0
@@ -291,7 +291,7 @@ def test_medkit_clears_poison_condition() -> None:
 
     asyncio.run(engine.run_action("medkit_use", None))
 
-    assert engine.text.get("legacy.line_1135_093") in events
+    assert engine.text.actions.medkit.use_poisoned in events
     assert engine.state.condition("poison").active is False
 
 
