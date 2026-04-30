@@ -26,17 +26,17 @@ class ForestRule:
 async def spark(engine: GameEngine) -> None:
     """Use the lighter."""
     engine.state.turns += 0.25
-    engine.emit("Flicking the lighter you produce a short-lived flame.")
+    engine.emit(engine.text.actions.lighter.spark)
 
 
 async def stump_climb(engine: GameEngine) -> None:
     """Climb the stump."""
     break_stump(
         engine,
-        engine.text.get("legacy.line_0212_007"),
-        engine.text.get("legacy.line_0217_008"),
-        engine.text.get("legacy.line_0218_009"),
-        engine.text.get("legacy.line_0220_010"),
+        engine.text.actions.stump.climb,
+        engine.text.actions.stump.climb_item_first,
+        engine.text.actions.stump.climb_location_first,
+        engine.text.actions.stump.climb_search,
     )
 
 
@@ -44,10 +44,10 @@ async def stump_smash(engine: GameEngine) -> None:
     """Smash the stump."""
     break_stump(
         engine,
-        engine.text.get("legacy.line_0252_012"),
-        engine.text.get("legacy.line_0257_013"),
-        engine.text.get("legacy.line_0258_014"),
-        engine.text.get("legacy.line_0259_015"),
+        engine.text.actions.stump.smash,
+        engine.text.actions.stump.smash_item_first,
+        engine.text.actions.stump.smash_location_first,
+        engine.text.actions.stump.smash_search,
     )
 
 
@@ -67,7 +67,7 @@ def break_stump(
     place = engine.place()
     place.first = place_first
     place.search = search
-    place.name = "at the riddled treestump, split in two"
+    place.name = engine.text.actions.stump.broken_name
     place.restricted = False
     stump.actions = {"stump_thru": ["go through", "through", "cross"]}
     engine.emit(stump.first)
@@ -76,7 +76,7 @@ def break_stump(
 async def stump_wade(engine: GameEngine) -> None:
     """Wade around the stump."""
     engine.state.turns += 3
-    engine.emit(engine.text.get("legacy.line_0236_011"))
+    engine.emit(engine.text.actions.stump.wade)
     exits = list(engine.world.locations["snake"].exits.values())
     if engine.state.previous in exits:
         exits.remove(engine.state.previous)
@@ -85,18 +85,18 @@ async def stump_wade(engine: GameEngine) -> None:
 
 async def stump_thru(engine: GameEngine) -> None:
     """Try to pass through the stump."""
-    engine.emit(engine.text.get("legacy.line_0271_016"))
+    engine.emit(engine.text.actions.stump.through)
 
 
 async def swamp_climb(engine: GameEngine) -> None:
     """Climb swamp trees."""
-    engine.emit(engine.text.get("legacy.line_0335_027"))
+    engine.emit(engine.text.actions.swamp.tree_climb)
     engine.state.turns += 1
 
 
 async def wood_climb(engine: GameEngine) -> None:
     """Climb wood trees."""
-    engine.emit(engine.text.get("legacy.line_0354_030"))
+    engine.emit(engine.text.actions.forest.wood_climb)
     engine.state.turns += 1
 
 
@@ -105,7 +105,7 @@ async def wood_go(engine: GameEngine) -> None:
     active = True
     correct_steps = 0
     engine.state.turns += 1
-    engine.emit(engine.rnd(engine.world.obstacles[11]))
+    engine.emit(engine.rnd(engine.world.random.woods_lost))
 
     while active:
         rules, search = forest_rules(engine)
@@ -125,13 +125,11 @@ async def wood_go(engine: GameEngine) -> None:
             if not movetry:
                 await engine.interpret(parsed)
             elif len(dirs) > 1:
-                engine.emit(
-                    "You don't know what to do or where to be. Do you need HELP?"
-                )
+                engine.emit(engine.text.system.confused)
                 await engine.sink(0.25)
                 engine.state.turns += 0.25
             elif not dirs:
-                engine.emit("Where do you want to go?")
+                engine.emit(engine.text.system.where_go)
             else:
                 direction = dirs[0]
                 rule = rules[direction]
@@ -140,7 +138,7 @@ async def wood_go(engine: GameEngine) -> None:
                     await engine.sink(0.25)
                     engine.state.turns += 0.25
                 elif rule.escape:
-                    engine.emit(engine.text.get("legacy.line_0623_042"))
+                    engine.emit(engine.text.actions.forest.edge)
                     engine.state.previous = "wood_in"
                     engine.state.current = "wood"
                     active = False
@@ -148,13 +146,13 @@ async def wood_go(engine: GameEngine) -> None:
                 else:
                     correct_steps = correct_steps + 1 if rule.correct else 0
                     engine.emit(
-                        engine.rnd(engine.world.obstacles[1])
+                        engine.rnd(engine.world.random.movement)
                         % engine.direction_name(direction)
                     )
-                    engine.emit(engine.rnd(engine.world.obstacles[2]))
-                    engine.emit(engine.rnd(engine.world.obstacles[11]))
+                    engine.emit(engine.rnd(engine.world.random.mud))
+                    engine.emit(engine.rnd(engine.world.random.woods_lost))
                     if correct_steps == 3:
-                        engine.dead(engine.text.get("legacy.line_0635_043"))
+                        engine.dead(engine.text.actions.forest.captivity_death)
                     engine.state.turns += 1
                     moved = True
 
@@ -172,25 +170,28 @@ def forest_rules(engine: GameEngine) -> tuple[dict[str, ForestRule], str]:
             rules[direction].correct = True
             break
 
-    search = engine.text.get("legacy.line_0532_041")
+    search = engine.text.actions.forest.search_empty
     for direction, rule in rules.items():
         if rule.correct:
             if engine.rng.randint(0, 2) == 0:
-                rule.text = engine.rnd(engine.world.obstacles[14])
-                search = f"The mud has been disturbed, and the tracks lead {direction}."
+                rule.text = engine.rnd(engine.world.random.woods)
+                search = engine.text.render(
+                    engine.text.templates.forest_tracks,
+                    direction=direction,
+                )
             else:
-                rule.text = engine.rnd(engine.world.obstacles[12])
+                rule.text = engine.rnd(engine.world.random.woods_correct)
         elif rule.escape:
-            rule.text = engine.rnd(engine.world.obstacles[13])
+            rule.text = engine.rnd(engine.world.random.woods_escape)
         else:
-            rule.text = engine.rnd(engine.world.obstacles[14])
+            rule.text = engine.rnd(engine.world.random.woods)
     return rules, search
 
 
 async def leeches_rid(engine: GameEngine) -> None:
     """Remove leeches."""
     engine.state.clear_condition("leeches", mark_cleared=True)
-    engine.emit(engine.text.get("legacy.line_0391_033"))
+    engine.emit(engine.text.actions.leeches.remove)
     engine.state.turns += 1.5
     await engine.sink(1.5)
 
@@ -200,7 +201,7 @@ async def swamp_go(engine: GameEngine) -> None:
     leeches = engine.state.condition("leeches")
     if leeches.cleared:
         return
-    engine.emit("You can feel movement beneath the water.")
+    engine.emit(engine.text.actions.swamp.leeches_begin)
     if not leeches.active:
         engine.state.activate_condition("leeches", count=0)
 
@@ -222,24 +223,24 @@ async def sand_forward(engine: GameEngine) -> None:
         )
         dirs = engine.extract(parsed, "direction")
         if len(dirs) > 1:
-            engine.emit("You don't know what to do or where to be. Do you need HELP?")
+            engine.emit(engine.text.system.confused)
             await engine.sink(0.25)
             engine.state.turns += 0.25
         elif (sandrand > 8 and movetry and not looktry) or count == 6:
-            engine.emit(engine.text.get("legacy.line_0479_037"))
+            engine.emit(engine.text.actions.sand.escape)
             active = False
             await engine.interpret(parsed)
         else:
             engine.state.turns += 1
             if movetry and not looktry and dirs:
                 engine.emit(
-                    engine.rnd(engine.world.obstacles[1])
+                    engine.rnd(engine.world.random.movement)
                     % engine.direction_name(dirs[0])
                 )
-                engine.emit(engine.rnd(engine.world.obstacles[4]))
+                engine.emit(engine.rnd(engine.world.random.exhaustion))
             else:
                 active = False
-                engine.dead(engine.text.get("legacy.line_0491_038"))
+                engine.dead(engine.text.actions.sand.death)
         count += 1
 
 
@@ -250,12 +251,12 @@ async def sand_backward(engine: GameEngine) -> None:
 
 async def troops_forward(engine: GameEngine) -> None:
     """Approach the troops."""
-    engine.dead(engine.text.get("legacy.line_0650_044"))
+    engine.dead(engine.text.actions.troops.approach_death)
 
 
 async def troops_backward(engine: GameEngine) -> None:
     """Back away from the troops."""
-    engine.emit(engine.text.get("legacy.line_0658_045"))
+    engine.emit(engine.text.actions.troops.fall_back)
     await engine.sink(1)
     engine.state.turns += 1
     engine.state.current = "troops"
@@ -263,27 +264,27 @@ async def troops_backward(engine: GameEngine) -> None:
 
 async def stones_listen(engine: GameEngine) -> None:
     """Listen to the stones."""
-    engine.emit(engine.text.get("legacy.line_0692_047"))
+    engine.emit(engine.text.actions.stones.listen)
     if engine.state.artifacts[0] and not engine.state.artifacts[1]:
         engine.state.artifacts[1] = True
-        engine.emit("The sound of static fills the air, alone amongst the stone.")
+        engine.emit(engine.text.artifacts.stone)
     if engine.state.current == "troops":
-        engine.emit("You think you hear voices, but you can't be certain.")
+        engine.emit(engine.text.actions.troops.voices)
     if engine.state.current == "troops_in":
-        engine.emit(engine.text.get("legacy.line_0703_048"))
+        engine.emit(engine.text.actions.stones.troops_close)
 
 
 async def stones_climb(engine: GameEngine) -> None:
     """Try to climb the stones."""
-    engine.emit("The stones are too vast and smooth to scale.")
+    engine.emit(engine.text.actions.stones.climb)
 
 
 async def cave_enter(engine: GameEngine) -> None:
     """Enter the cave."""
-    engine.emit(engine.text.get("legacy.line_0739_051"))
-    engine.emit(engine.text.get("legacy.line_0742_052"))
+    engine.emit(engine.text.actions.cave.enter)
+    engine.emit(engine.text.actions.cave.fall)
     engine.emit(MediaEvent("bg", 255))
-    engine.emit(engine.text.get("legacy.line_0747_053"))
+    engine.emit(engine.text.actions.cave.landing)
     engine.emit(MediaEvent("music", ("cave", -1)))
     engine.state.current = "cave_in"
     engine.state.cave_dir = engine.rng.choice(list(engine.place().exits.values()))
@@ -294,12 +295,12 @@ async def cave_enter(engine: GameEngine) -> None:
 def describe_cave(engine: GameEngine) -> None:
     """Describe cave sense by room size."""
     mapping = {
-        "small": "legacy.line_0876_061",
-        "medium": "legacy.line_0880_062",
-        "large": "legacy.line_0884_063",
-        "unknown": "legacy.line_0888_064",
+        "small": engine.text.actions.cave.sense_small,
+        "medium": engine.text.actions.cave.sense_medium,
+        "large": engine.text.actions.cave.sense_large,
+        "unknown": engine.text.actions.cave.sense_unknown,
     }
-    engine.emit(engine.text.get(mapping[engine.state.cave_room]))
+    engine.emit(mapping[engine.state.cave_room])
 
 
 async def flare_fire(engine: GameEngine) -> None:
@@ -307,17 +308,17 @@ async def flare_fire(engine: GameEngine) -> None:
     engine.state.turns += 0.25
     await engine.sink(0.25)
     engine.world.items["flare"].actions.clear()
-    engine.world.items["flare"].look = engine.text.get("legacy.line_1033_077")
-    engine.world.items["flare"].search = engine.text.get("legacy.line_1034_078")
-    engine.emit(engine.text.get("legacy.line_1075_085"))
+    engine.world.items["flare"].look = engine.text.actions.flare.after_look
+    engine.world.items["flare"].search = engine.text.actions.flare.after_search
+    engine.emit(engine.text.actions.flare.fire)
 
 
 async def box3_inside(engine: GameEngine) -> None:
     """Search the large crate."""
     if "box3" in engine.state.searched:
-        engine.emit("There is nothing useful left inside.")
+        engine.emit(engine.text.actions.boxes.box3_empty)
     else:
-        engine.emit(engine.text.get("legacy.line_1106_090"))
+        engine.emit(engine.text.actions.boxes.box3_found)
     engine.state.holding.add("flare")
     engine.state.searched.add("box3")
 
@@ -328,33 +329,33 @@ async def medkit_use(engine: GameEngine) -> None:
     await engine.sink(1)
     poison = engine.state.condition("poison")
     if poison.active:
-        engine.emit(engine.text.get("legacy.line_1135_093"))
+        engine.emit(engine.text.actions.medkit.use_poisoned)
         engine.state.clear_condition("poison")
     else:
-        engine.emit(engine.text.get("legacy.line_1140_094"))
+        engine.emit(engine.text.actions.medkit.use_unneeded)
 
 
 async def box4_inside(engine: GameEngine) -> None:
     """Search the flat case."""
     if "box4" in engine.state.searched:
-        engine.emit("Nothing useful remains.")
+        engine.emit(engine.text.actions.boxes.box4_empty)
     else:
-        engine.emit(engine.text.get("legacy.line_1163_098"))
+        engine.emit(engine.text.actions.boxes.box4_found)
     engine.state.holding.add("medkit")
     engine.state.searched.add("box4")
 
 
 async def boat_enter(engine: GameEngine) -> None:
     """Enter the log boat."""
-    engine.emit(engine.text.get("legacy.line_1199_103"))
+    engine.emit(engine.text.actions.boat.enter)
     if engine.rng.randint(0, 3) == 0:
-        engine.dead(engine.text.get("legacy.line_1204_104"))
-    engine.emit(engine.text.get("legacy.line_1208_105"))
-    engine.emit("Endless nightmares run through the dark.")
+        engine.dead(engine.text.actions.boat.death)
+    engine.emit(engine.text.actions.boat.swept_right)
+    engine.emit(engine.text.actions.boat.nightmares)
     engine.emit(MediaEvent("bg", 255))
     engine.emit(" ")
     engine.emit(MediaEvent("reset", ""))
-    engine.emit(engine.text.get("legacy.line_1217_106"))
+    engine.emit(engine.text.actions.boat.restart)
     engine.emit(MediaEvent("bg", 0))
     engine.state.turns += 3
     engine.state.current = "wood"
@@ -365,10 +366,10 @@ async def boat_enter(engine: GameEngine) -> None:
 async def water_enter(engine: GameEngine) -> None:
     """Enter the river water."""
     engine.state.turns += 2
-    engine.emit(engine.text.get("legacy.line_1248_109"))
+    engine.emit(engine.text.actions.water.enter)
     if engine.rng.randint(0, 10) < 2:
-        engine.dead(engine.text.get("legacy.line_1253_110"))
-    engine.emit(engine.text.get("legacy.line_1257_111"))
+        engine.dead(engine.text.actions.water.death)
+    engine.emit(engine.text.actions.water.escape)
 
 
 async def fog_go(engine: GameEngine) -> None:
@@ -379,7 +380,7 @@ async def fog_go(engine: GameEngine) -> None:
 
     while active:
         fogrand = engine.rng.randint(0, 10)
-        engine.world.locations["fog"].first = engine.text.get("legacy.line_0928_068")
+        engine.world.locations["fog"].first = engine.text.actions.fog.inside_first
         await engine.status()
         parsed = engine.parse(await engine.prompt())
         looktry = ("command", "look") in parsed
@@ -389,7 +390,7 @@ async def fog_go(engine: GameEngine) -> None:
         dirs = engine.extract(parsed, "direction")
 
         if len(dirs) > 1:
-            engine.emit("You don't know what to do or where to be. Do you need HELP?")
+            engine.emit(engine.text.system.confused)
             await engine.sink(0.25)
             engine.state.turns += 0.25
             continue
@@ -399,18 +400,19 @@ async def fog_go(engine: GameEngine) -> None:
             escape_fog(engine, exits)
             active = False
         elif looktry:
-            engine.emit(engine.rnd(engine.world.obstacles[8]))
+            engine.emit(engine.rnd(engine.world.random.fog))
         elif movetry and dirs:
             engine.emit(
-                engine.rnd(engine.world.obstacles[1]) % engine.direction_name(dirs[0])
+                engine.rnd(engine.world.random.movement)
+                % engine.direction_name(dirs[0])
             )
-            engine.emit(engine.rnd(engine.world.obstacles[8]))
-            engine.emit(engine.rnd(engine.world.obstacles[2]))
+            engine.emit(engine.rnd(engine.world.random.fog))
+            engine.emit(engine.rnd(engine.world.random.mud))
             move_count += 1
         elif movetry:
-            engine.emit("Where do you want to go?")
+            engine.emit(engine.text.system.where_go)
         else:
-            engine.emit(engine.rnd(engine.world.obstacles[8]))
+            engine.emit(engine.rnd(engine.world.random.fog))
             await engine.interpret(parsed)
 
         if active and move_count == 6 and movetry and not looktry and dirs:
@@ -420,8 +422,8 @@ async def fog_go(engine: GameEngine) -> None:
 
 def escape_fog(engine: GameEngine, exits: list[str]) -> None:
     """Move out of the fog into a randomized neighboring location."""
-    engine.emit(engine.text.get("legacy.line_0972_069"))
-    engine.world.locations["fog"].first = engine.text.get("legacy.line_0974_070")
+    engine.emit(engine.text.actions.fog.escape)
+    engine.world.locations["fog"].first = engine.text.actions.fog.return_first
     engine.state.previous = "fog"
     engine.state.current = exits[engine.rng.randint(0, len(exits) - 1)]
     engine.state.visited.add(engine.state.current)

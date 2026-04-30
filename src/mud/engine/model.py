@@ -5,7 +5,27 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Literal
 
+from mud.engine.text import RandomText
+
 Direction = Literal["north", "east", "south", "west"]
+
+
+def empty_random_text() -> RandomText:
+    """Return an empty random text bank set."""
+    return RandomText(
+        movement=(),
+        mud=(),
+        time=(),
+        exhaustion=(),
+        waiting=(),
+        shouting=(),
+        fog=(),
+        leeches=(),
+        woods_lost=(),
+        woods_correct=(),
+        woods_escape=(),
+        woods=(),
+    )
 
 
 @dataclass(slots=True)
@@ -45,7 +65,7 @@ class World:
     items: dict[str, Item] = field(default_factory=dict)
     condition_items: dict[str, str] = field(default_factory=dict)
     start: str = "plane"
-    obstacles: list[list[str]] = field(default_factory=list)
+    random: RandomText = field(default_factory=empty_random_text)
     commands: dict[str, list[str]] = field(default_factory=dict)
 
     @property

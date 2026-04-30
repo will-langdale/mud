@@ -1,7 +1,0 @@
-[system]
-help = Your head is murky and it is a tremendous effort to recall anything at all. You can GO NORTH, SOUTH, EAST or WEST. You can LOOK in directions and at objects. You can SEARCH objects, or just the area you're in. You can THINK about what options are available at each location. You can cry for the only HELP you're getting.
-invalid = You stand still, exhausted, sinking slowly into the mud. Do you need HELP?
-confused = You don't know what to do or where to be. Do you need HELP?
-
-[placeholders]
-movement = You manage to go {direction}.

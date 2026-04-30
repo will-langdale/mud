@@ -1,0 +1,30 @@
+name: Common setup
+description: uv, just, and optionally Bun
+
+inputs:
+  python-version:
+    description: Python version for uv to install. Leave blank to use .python-version
+    required: false
+    default: ""
+  install-bun:
+    description: Whether to install Bun
+    required: false
+    default: "false"
+
+runs:
+  using: composite
+  steps:
+    - name: Install uv and Python
+      uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7.6.0
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Install just
+      uses: extractions/setup-crate@4993624604c307fbca528d28a3c8b60fa5ecc859 # v1.4.0
+      with:
+        repo: casey/just
+        version: 1.50.0
+
+    - name: Install bun
+      if: inputs.install-bun == 'true'
+      uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0

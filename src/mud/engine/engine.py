@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import inspect
 import random
-from collections.abc import Awaitable, Callable, Iterable
+from collections.abc import Awaitable, Callable, Iterable, Sequence
 from dataclasses import dataclass
 from enum import Enum, auto
 from typing import cast
@@ -14,7 +14,7 @@ from mud.engine.actions import ACTION_HANDLERS, describe_cave
 from mud.engine.exceptions import Death, Quit
 from mud.engine.model import GameState, Item, Location, World
 from mud.engine.parser import dictmerge, parser
-from mud.engine.text import TextStore
+from mud.engine.text import TextAssets
 from mud.engine.world import build_world as make_world
 from mud.events import EngineEvent, MediaEvent
 
@@ -62,7 +62,7 @@ class GameEngine:
         self.input_provider = input_provider
         self.output_handler = output_handler
         self.rng = rng if rng is not None else random.Random(seed)
-        self.text = TextStore.load()
+        self.text = TextAssets.load()
         self.world = make_world(self.text)
         self.state = self._new_state()
 
@@ -96,25 +96,25 @@ class GameEngine:
             self.emit(MediaEvent("bg", 255))
             self.emit(" ")
             self.emit(MediaEvent("reset", ""))
-            self.emit(self.text.get("intro.final_ending"))
+            self.emit(self.text.intro.final_ending)
             self.emit(MediaEvent("bg", 0))
             self.emit(MediaEvent("end", 0))
             self.emit(" ")
-            self.emit(self.text.get("intro.final_credit"))
+            self.emit(self.text.intro.final_credit)
             raise Quit
 
         if deaths == 0:
             self.emit(MediaEvent("music", ("main", -1)))
-            self.emit(self.text.get("intro.help_prompt"))
+            self.emit(self.text.intro.help_prompt)
             self.emit(MediaEvent("bg", 0))
             self.emit(" ")
-            self.emit(self.text.get("intro.first_run"))
+            self.emit(self.text.intro.first_run)
         elif deaths <= 2:
-            self.emit_restart("intro.restart_early")
+            self.emit_restart(self.text.intro.restart_early)
         elif deaths <= 4:
-            self.emit_restart("intro.restart_mid")
+            self.emit_restart(self.text.intro.restart_mid)
         else:
-            self.emit_restart("intro.restart_late")
+            self.emit_restart(self.text.intro.restart_late)
 
     async def loop(self) -> None:
         """Run the room/status/input loop."""
@@ -123,12 +123,12 @@ class GameEngine:
             await self.room()
             await self.whatnow()
 
-    def emit_restart(self, key: str) -> None:
+    def emit_restart(self, restart_text: str) -> None:
         """Emit the standard restart sequence."""
         self.emit(MediaEvent("bg", 255))
         self.emit(" ")
         self.emit(MediaEvent("reset", ""))
-        self.emit(self.text.get(key))
+        self.emit(restart_text)
         self.emit(MediaEvent("bg", 0))
         self.emit(MediaEvent("sound", "PLANE"))
 
@@ -136,7 +136,7 @@ class GameEngine:
         """Emit an engine event."""
         self.output_handler(event)
 
-    def rnd(self, values: list[str]) -> str:
+    def rnd(self, values: Sequence[str]) -> str:
         """Return a legacy-style random list element."""
         return values[self.rng.randint(0, len(values) - 1)]
 
@@ -174,12 +174,12 @@ class GameEngine:
 
         for group in (commands, dirs, actions, subjects):
             if len(group) > 1:
-                self.emit("You don't know what to do or where to be. Do you need HELP?")
+                self.emit(self.text.system.confused)
                 await self.sink(0.25)
                 self.state.turns += 0.25
                 return
         if not commands and not dirs and not actions and not subjects:
-            self.emit(self.text.get("system.invalid"))
+            self.emit(self.text.system.invalid)
             await self.sink(0.25)
             self.state.turns += 0.25
             return
@@ -187,17 +187,17 @@ class GameEngine:
         if dirs and self.blocked(dirs[0], commands):
             await self.sink(0.25)
             self.state.turns += 0.25
-            self.emit("You can't go that way right now.")
+            self.emit(self.text.system.blocked)
             return
 
         if self.state.condition("sinking").active:
             if actions or subjects:
-                self.emit("You try to move, but you can't reach to do that.")
+                self.emit(self.text.system.unreachable)
                 await self.sink(0.25)
                 self.state.turns += 0.25
                 return
             if "wait" in commands:
-                self.emit("Alone, you wait to die.")
+                self.emit(self.text.system.alone_wait)
                 await self.sink(1)
                 self.state.turns += 1
                 return
@@ -223,11 +223,11 @@ class GameEngine:
             await self.look(target)
         elif command == "move":
             if target is None:
-                self.emit("Where do you want to go?")
+                self.emit(self.text.system.where_go)
             else:
                 self.move(target)
         elif command == "help":
-            self.emit(self.text.get("system.help"))
+            self.emit(self.text.system.help)
             await self.sink(0.25)
             self.state.turns += 0.25
         elif command == "think":
@@ -237,7 +237,7 @@ class GameEngine:
         elif command == "wait":
             await self.wait()
         elif command == "shout":
-            self.emit(self.rnd(self.world.obstacles[6]))
+            self.emit(self.rnd(self.world.random.shouting))
         elif command == "exit":
             await self.exit()
 
@@ -246,10 +246,7 @@ class GameEngine:
         del target
         handler = ACTION_HANDLERS.get(action)
         if handler is None:
-            self.emit(
-                "You stand still, exhausted, sinking slowly into the mud. "
-                "Do you need HELP?"
-            )
+            self.emit(self.text.system.invalid)
             await self.sink(0.25)
             self.state.turns += 0.25
             return
@@ -267,11 +264,13 @@ class GameEngine:
     def move(self, destination: str) -> None:
         """Move to a neighboring place."""
         if destination == "":
-            self.emit("Where do you want to go?")
+            self.emit(self.text.system.where_go)
             return
         self.state.turns += 2
-        self.emit(self.rnd(self.world.obstacles[2]))
-        self.emit(self.rnd(self.world.obstacles[1]) % self.direction_name(destination))
+        self.emit(self.rnd(self.world.random.mud))
+        self.emit(
+            self.rnd(self.world.random.movement) % self.direction_name(destination)
+        )
         if not self.place().restricted:
             self.state.previous = self.state.current
         self.state.current = destination
@@ -286,7 +285,12 @@ class GameEngine:
                 for item in self.visible_items():
                     self.emit(item.first)
         elif target in self.place().exits.values():
-            self.emit(f"You see {self.world.locations[target].look}.")
+            self.emit(
+                self.text.render(
+                    self.text.templates.look_direction,
+                    look=self.world.locations[target].look,
+                )
+            )
         else:
             item = self.world.items[target]
             if not item.hidden:
@@ -298,7 +302,7 @@ class GameEngine:
         """Wait in the current room."""
         await self.sink(1)
         self.state.turns += 1
-        self.emit(self.rnd(self.world.obstacles[5]))
+        self.emit(self.rnd(self.world.random.waiting))
 
     async def search(self, target: str | None) -> None:
         """Search the current room or a target."""
@@ -328,30 +332,30 @@ class GameEngine:
             and not has_smoke_artifact
         ):
             self.state.artifacts[2] = True
-            self.emit(self.text.get("legacy.line_1709_159"))
+            self.emit(self.text.artifacts.smoke_found)
             self.emit(MediaEvent("sound", "BELLS"))
         else:
             self.emit(self.place().search)
             if self.state.current != "troops_in":
-                self.emit(self.rnd(self.world.obstacles[2]))
+                self.emit(self.rnd(self.world.random.mud))
             self.state.turns += 1
 
     async def search_inside(self, target: str) -> None:
         """Search inside an item."""
         if target == "fighter":
             if target in self.state.searched:
-                self.emit(self.text.get("legacy.line_0181_005"))
+                self.emit(self.text.actions.search.fighter_searched)
             else:
-                self.emit(self.text.get("legacy.line_0185_006"))
+                self.emit(self.text.actions.search.fighter_found)
             self.state.holding.add("lighter")
             self.state.searched.add("fighter")
         elif target == "pages":
             if target in self.state.searched:
-                self.emit("No pages remain in the scrubland.")
+                self.emit(self.text.system.no_pages)
             else:
-                self.emit(self.text.get("legacy.line_0303_023"))
-                self.emit(self.rnd(self.world.obstacles[2]))
-                self.emit(self.text.get("legacy.line_0307_024"))
+                self.emit(self.text.actions.search.pages_search)
+                self.emit(self.rnd(self.world.random.mud))
+                self.emit(self.text.actions.search.pages_found)
                 self.state.turns += 3
             self.state.holding.add("route")
             self.state.searched.add("pages")
@@ -366,13 +370,13 @@ class GameEngine:
         for line in self.artifact_thoughts():
             self.emit(line)
         if self.state.condition("poison").active:
-            self.emit("Surely the plane had some medical supplies?")
+            self.emit(self.text.system.medkit_hint)
         if self.state.current == "cave_in":
             self.cave_think()
         active = [self.world.items[item] for item in self.active_item_ids()]
         options = self.think_text(self.room_items()) + self.think_text(active)
         if options in {"", "You can "}:
-            self.emit("There is nothing to do but move on.")
+            self.emit(self.text.system.no_options)
         else:
             self.emit(options)
         await self.sink(0.25)
@@ -380,7 +384,7 @@ class GameEngine:
 
     async def exit(self) -> None:
         """Ask for quit confirmation."""
-        self.emit("Are you certain? All you've discovered will be lost.")
+        self.emit(self.text.system.exit_confirm)
         answer = parser(await self.prompt(), {"yes": ["yes", "y"], "no": ["no", "n"]})
         if "yes" in answer:
             raise Quit
@@ -393,10 +397,12 @@ class GameEngine:
             if place.id != "cave_in":
                 self.emit(place.first)
         elif place.id == "cave_in":
-            self.emit(self.text.get("legacy.line_2249_212"))
+            self.emit(self.text.actions.cave.return_)
             self.state.turns += 3
         else:
-            self.emit(f"You are {place.name}.")
+            self.emit(
+                self.text.render(self.text.templates.room_return, name=place.name)
+            )
 
         if place.restricted:
             self.emit(place.restriction)
@@ -425,13 +431,13 @@ class GameEngine:
         """Return artifact hint lines."""
         lines: list[str] = []
         if True in self.state.artifacts:
-            lines.append("A thought that's not your own eats into your mind.")
+            lines.append(self.text.artifacts.intrusion)
         if self.state.artifacts[0]:
-            lines.append("The open sky is an endless blue, find them in the earth.")
+            lines.append(self.text.artifacts.earth)
         if self.state.artifacts[1]:
-            lines.append("The sound of static fills the air, alone amongst the stone.")
+            lines.append(self.text.artifacts.stone)
         if self.state.artifacts[2]:
-            lines.append("Lost beneath the endless mud a wisp of smoke creeps by.")
+            lines.append(self.text.artifacts.smoke)
         return lines
 
     def think_text(self, items: Iterable[Item]) -> str:
@@ -449,8 +455,12 @@ class GameEngine:
             )
             parts.append(f"{verb}{item.name}")
         if len(parts) == 1:
-            return f"You can {parts[0]}."
-        return f"You can {', '.join(parts[:-1])}, or {parts[-1]}."
+            return self.text.render(self.text.templates.think_single, option=parts[0])
+        return self.text.render(
+            self.text.templates.think_many,
+            options=", ".join(parts[:-1]),
+            last_option=parts[-1],
+        )
 
     def direction_tokens(self) -> dict[Token, list[str]]:
         """Return direction parser tokens for the current place."""

@@ -33,9 +33,9 @@ async def sink(engine: GameEngine, amount: float = 1) -> None:
         sinking.active = True
         await sink_death(engine)
     elif sinking.count > 1:
-        engine.emit("You're having trouble shifting your weight.")
+        engine.emit(engine.text.status.sinking.trouble)
     elif sinking.count >= 0.75:
-        engine.emit(engine.text.get("legacy.line_2602_229"))
+        engine.emit(engine.text.status.sinking.warning)
 
 
 async def sink_death(engine: GameEngine) -> None:
@@ -46,20 +46,20 @@ async def sink_death(engine: GameEngine) -> None:
     while sinking.active:
         if sinking.count >= 5:
             sinking.active = False
-            engine.dead(engine.text.get("legacy.line_2620_230"))
+            engine.dead(engine.text.status.sinking.death)
         if sinking.count >= 4:
             key = (
-                "legacy.line_2625_231"
+                engine.text.status.sinking.face_cave
                 if engine.state.current == "cave_in"
-                else "legacy.line_2629_232"
+                else engine.text.status.sinking.face_open
             )
-            engine.emit(engine.text.get(key))
+            engine.emit(key)
         elif sinking.count >= 3:
-            engine.emit(engine.text.get("legacy.line_2638_233"))
+            engine.emit(engine.text.status.sinking.chest)
         elif sinking.count >= 2:
-            engine.emit(engine.text.get("legacy.line_2647_234"))
+            engine.emit(engine.text.status.sinking.legs)
         else:
-            engine.emit("You flounder deep in the mud, utterly stuck.")
+            engine.emit(engine.text.status.sinking.stuck)
         engine.state.turns += 1
         sinking.count += 0.5
         await engine.whatnow()
@@ -73,12 +73,12 @@ def poison(engine: GameEngine) -> None:
     if not poisoned.active:
         return
     if poisoned.started_turn <= state.turns - 10:
-        engine.dead(engine.text.get("legacy.line_2284_213"))
+        engine.dead(engine.text.status.poison.death)
     if poisoned.started_turn <= state.turns - 6 and poisoned.count == 2:
-        engine.emit(engine.text.get("legacy.line_2288_214"))
+        engine.emit(engine.text.status.poison.severe)
         poisoned.count = 3
     elif poisoned.started_turn <= state.turns - 2 and poisoned.count == 1:
-        engine.emit(engine.text.get("legacy.line_2293_215"))
+        engine.emit(engine.text.status.poison.early)
         poisoned.count = 2
     elif poisoned.started_turn <= state.turns and poisoned.count == 0:
         poisoned.count = 1
@@ -89,10 +89,10 @@ def leeched(engine: GameEngine) -> None:
     state = engine.state
     leeches = state.condition("leeches")
     if leeches.active and state.current != "swamp":
-        engine.emit(engine.rnd(engine.world.obstacles[9]))
+        engine.emit(engine.rnd(engine.world.random.leeches))
         leeches.count += 1
     if leeches.count == 5:
-        engine.emit(engine.text.get("legacy.line_2687_235"))
+        engine.emit(engine.text.status.leeches.poisoned)
         state.activate_condition("poison", started_turn=state.turns)
 
 
@@ -114,13 +114,13 @@ def time(engine: GameEngine) -> None:
             and index not in engine.state.time_seen
         ):
             if engine.state.current != "cave_in":
-                engine.emit(engine.world.obstacles[3][index])
+                engine.emit(engine.world.random.time[index])
                 if bg is not None:
                     engine.emit(MediaEvent("bg", bg))
                 engine.state.time_seen.append(index)
             engine.state.time_progress = index + 1
     if engine.state.turns >= 30:
-        engine.dead(engine.text.get("legacy.line_2750_236"))
+        engine.dead(engine.text.status.time.death)
 
 
 def music(engine: GameEngine) -> None:
