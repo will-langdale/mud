@@ -13,7 +13,7 @@ format:
 
 # Run type checking
 check *ARGS:
-    uvx ty@latest check --output-format concise {{ARGS}}
+    uv run ty check --output-format concise {{ARGS}}
 
 # Run unit tests
 test *ARGS:

@@ -16,6 +16,7 @@ dependencies = [
 dev = [
     "pygbag>=0.9.3",
     "pytest>=9.0.3",
+    "ty>=0.0.33",
 ]
 
 [tool.uv]
